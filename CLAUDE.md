@@ -43,7 +43,7 @@ npm run lint
 
 The user explicitly rejected atom/molecule-looking 3D. Current centerpieces:
 - **HeroScene**: animated 3D **candlestick chart** (`CandleChart` — gold bullish / bronze bearish candles, upward trend, glowing trend line) + a point-grid floor (`WaveField`) + orbiting particles.
-- **AboutOrb**: rotating **gold coin stack** (spins on hover).
+- **AboutOrb**: a **molten-gold blob** — metallic icosahedron with drei `MeshDistortMaterial` (churns harder/faster on hover), slow spin. Reflections come from a local Shanghai-night HDRI (`public/hdri/shanghai_bund_2k.hdr`, CC0 Poly Haven) so city lights play across the gold. (User rejected earlier coin-stack, dotted-globe and bullion-bar versions, and every built-in `Environment` preset.)
 
 Do NOT go back to icosahedron + orbital rings (reads as an atom).
 
@@ -51,7 +51,8 @@ Do NOT go back to icosahedron + orbital rings (reads as an atom).
 
 - **Scroll reveals**: use `useReveal`/`SplitHeading` (once-triggers, `start: 'top 90%'`) + the multi-`ScrollTrigger.refresh()` in `SmoothScroll`. `gsap.from()` scattered with ScrollTrigger left content stuck at `opacity:0` when triggers fired before layout settled.
 - **R3F `<Environment>` needs `<Suspense>`** around it, or a suspended HDRI load blanks the whole canvas ("appears then disappears"). Avoid toggling `frameloop` to `'never'` — it clears the WebGL buffer (blank canvas).
-- **WaveField cursor repulsion**: the grid is a tilted plane, so map the cursor via a **raycaster onto the plane + `worldToLocal`**, NOT `pointer.x/y` directly (that projects to the wrong spot). Points are pushed radially away from that local point.
+- **drei `<Text>` blanks the canvas the same way**: it fetches a font (Roboto by default) and suspends; unwrapped (or if the fetch hangs/fails) the whole scene "appears then disappears". Avoid it for canvas labels — bake markings into geometry/texture instead.
+- **WaveField cursor repulsion**: don't use R3F `state.pointer` — the hero's `z-[1]` gradient overlays cover the canvas with pointer-events, so it stays frozen. Track the cursor from a `window` `mousemove` and derive NDC from the canvas rect. The grid is a tilted plane, so map that cursor via a **raycaster onto the plane + `worldToLocal`** (NOT `pointer.x/y` directly). Points are then shoved radially away (+ `z` dip) from that local point.
 - **Overflow**: `html,body { overflow-x: clip }` + `Section` has `overflow-hidden`; cap decorative glows at `max-w-[90vw]`.
 - Motion should stay **slow/calm** — the user pushed back on fast, high-amplitude animation.
 

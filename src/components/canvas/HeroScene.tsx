@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useMemo, useEffect, Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Float, Environment, Points, PointMaterial, Sparkles, Preload } from '@react-three/drei'
 import * as THREE from 'three'
 
@@ -135,20 +135,40 @@ function WaveField() {
   const hit = useMemo(() => new THREE.Vector3(), [])
   const cursor = useRef(new THREE.Vector2(9999, 9999))
 
+  // The hero overlays (gradients, text) sit on top of the canvas with
+  // pointer-events, so R3F's `state.pointer` never updates here. Track the
+  // real cursor from `window` and derive NDC from the canvas rect ourselves.
+  const { gl } = useThree()
+  const ndc = useRef(new THREE.Vector2())
+  const active = useRef(false)
+  useEffect(() => {
+    const el = gl.domElement
+    const onMove = (e: MouseEvent) => {
+      const r = el.getBoundingClientRect()
+      ndc.current.set(
+        ((e.clientX - r.left) / r.width) * 2 - 1,
+        -((e.clientY - r.top) / r.height) * 2 + 1
+      )
+      active.current = true
+    }
+    window.addEventListener('mousemove', onMove, { passive: true })
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [gl])
+
   useFrame((state, delta) => {
     const mesh = ref.current
     if (!mesh) return
     mesh.updateMatrixWorld()
 
     // Build the grid's surface as a world-space plane, then raycast the
-    // pointer onto it and bring the hit point into the grid's local space.
+    // cursor onto it and bring the hit point into the grid's local space.
     normal.set(0, 0, 1).applyQuaternion(mesh.quaternion).normalize()
     plane.setFromNormalAndCoplanarPoint(normal, mesh.position)
-    state.raycaster.setFromCamera(state.pointer, state.camera)
-    if (state.raycaster.ray.intersectPlane(plane, hit)) {
+    state.raycaster.setFromCamera(ndc.current, state.camera)
+    if (active.current && state.raycaster.ray.intersectPlane(plane, hit)) {
       mesh.worldToLocal(hit)
-      cursor.current.x += (hit.x - cursor.current.x) * 0.14
-      cursor.current.y += (hit.y - cursor.current.y) * 0.14
+      cursor.current.x += (hit.x - cursor.current.x) * 0.09
+      cursor.current.y += (hit.y - cursor.current.y) * 0.09
     }
     const cx = cursor.current.x
     const cy = cursor.current.y
@@ -163,24 +183,25 @@ function WaveField() {
 
       // Gentle idle swell so the grid breathes even without the mouse.
       const wave =
-        Math.sin(x * 0.3 + t * 0.25) * 0.18 +
-        Math.cos(y * 0.26 + t * 0.2) * 0.18 +
-        Math.sin((x + y) * 0.14 + t * 0.15) * 0.1
+        Math.sin(x * 0.3 + t * 0.25) * 0.3 +
+        Math.cos(y * 0.26 + t * 0.2) * 0.3 +
+        Math.sin((x + y) * 0.14 + t * 0.15) * 0.18
 
-      // In-plane repulsion: each point is pushed directly away from the
+      // In-plane repulsion: each point is shoved directly away from the
       // projected cursor, strongest next to it, fading with distance — the
-      // grid opens a moving hole that avoids the cursor.
+      // grid tears open a moving crater that flees the cursor. `z` also dips
+      // away so the field visibly bends down under the pointer.
       const dx = x - cx
       const dy = y - cy
       const dist = Math.hypot(dx, dy) || 0.0001
-      const influence = Math.exp(-dist * dist * 0.04) // 1 at cursor → ~0 far
+      const influence = Math.exp(-dist * dist * 0.05) // 1 at cursor → ~0 far
       const repel = influence * 2.4
       arr[ix] = x + (dx / dist) * repel
       arr[ix + 1] = y + (dy / dist) * repel
-      arr[ix + 2] = wave
+      arr[ix + 2] = wave - influence * 1.1
     }
     pos.needsUpdate = true
-    mesh.rotation.z = THREE.MathUtils.damp(mesh.rotation.z, state.pointer.x * 0.03, 1.2, delta)
+    mesh.rotation.z = THREE.MathUtils.damp(mesh.rotation.z, ndc.current.x * 0.03, 1.2, delta)
   })
 
   return (
