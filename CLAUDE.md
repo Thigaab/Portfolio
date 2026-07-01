@@ -57,5 +57,5 @@ Do NOT go back to icosahedron + orbital rings (reads as an atom).
 
 ## Conventions
 
-- Conventional Commits, short English messages. Commit trailer: `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`.
+- Conventional Commits, short English messages. **Never add a `Co-Authored-By` / "Generated with Claude" trailer or any Anthropic attribution to commits.**
 - A finance project is planned but not built yet — no placeholder card for it.
