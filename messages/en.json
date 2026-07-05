@@ -1,0 +1,80 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact",
+    "cta": "Get in touch"
+  },
+  "hero": {
+    "eyebrow": "Fullstack · DevOps · Finance",
+    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from code to deployment — with a particular passion for finance.",
+    "ctaProjects": "Explore my projects",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "eyebrow": "01 / About",
+    "heading": "ABOUT",
+    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from code to deployment — with a particular passion for finance.",
+    "paragraph2": "Fascinated by the complexity of systems — whether data pipelines, microservice architectures or financial markets. I look for projects where technical rigor meets real impact.",
+    "features": {
+      "epita": { "label": "EPITA Paris", "desc": "Engineering degree, class of 2027" },
+      "fullstack": { "label": "Fullstack & DevOps", "desc": "From code to deployment" },
+      "finance": { "label": "Finance", "desc": "Quantitative systems" },
+      "selfhosted": { "label": "Self-hosted", "desc": "Personal Docker infrastructure" }
+    }
+  },
+  "stats": {
+    "languages": "Languages mastered",
+    "projects": "Projects shipped",
+    "experience": "Years of experience"
+  },
+  "skills": {
+    "eyebrow": "02 / Tech stack",
+    "heading": "SKILLS"
+  },
+  "projects": {
+    "eyebrow": "03 / Selected work",
+    "heading": "PROJECTS",
+    "viewGithub": "View on GitHub",
+    "privateCode": "Academic project · private code",
+    "items": {
+      "tiger-compiler": {
+        "description": "Full compiler for the educational Tiger language — lexical, syntactic and semantic analysis plus code generation.",
+        "period": "Feb – May 2026"
+      },
+      "jws-epibazaar": {
+        "description": "Backend for a resource-management game — 3 interconnected apps with a layered architecture, Kafka messaging and the Hibernate ORM.",
+        "period": "Feb 2025"
+      },
+      "42sh": {
+        "description": "Full POSIX shell with AST parsing, command execution, redirections and pipes. Built by a team of 4 in one month.",
+        "period": "Jan 2024"
+      },
+      "ocr-sudoku": {
+        "description": "Sudoku grid recognition via image processing and a neural network, followed by automatic solving.",
+        "period": "Oct 2023"
+      },
+      "prospectmap": {
+        "description": "Automated prospecting tool that identifies local businesses likely to need a new website.",
+        "period": "2025"
+      },
+      "dunes-demis": {
+        "description": "Showcase site for the Dunes & Demis crew at the 4L Trophy 2027. A modern, fast interface.",
+        "period": "2025"
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "04 / Contact",
+    "headingLine1": "LET'S",
+    "headingLine2": "TALK",
+    "intro": "Open to internships, apprenticeships and ambitious projects. Feel free to reach out.",
+    "cta": "Send a message",
+    "footerTech": "Next.js · React Three Fiber · GSAP"
+  },
+  "metadata": {
+    "title": "Thibaut Bonefont — Fullstack Engineer",
+    "description": "Portfolio of Thibaut Bonefont, Fullstack & DevOps engineer, student at EPITA Paris. Focused on distributed systems and finance."
+  }
+}

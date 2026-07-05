@@ -2,10 +2,11 @@
 
 import { useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
+import { useTranslations } from 'next-intl'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { PERSONAL, STATS } from '@/lib/data'
+import { STATS } from '@/lib/data'
 import { SplitHeading, useReveal } from '@/lib/anim'
 import { Section, Container } from '@/components/layout/Section'
 
@@ -50,13 +51,15 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 }
 
 const FEATURES = [
-  { icon: '⚡', label: 'EPITA Paris', desc: 'Cycle ingénieur, diplôme 2026' },
-  { icon: '🏗️', label: 'Fullstack & DevOps', desc: 'Du code au déploiement' },
-  { icon: '📈', label: 'Finance', desc: 'Systèmes quantitatifs & trading' },
-  { icon: '🐳', label: 'Self-hosted', desc: 'Infra Docker personnelle' },
-]
+  { icon: '⚡', key: 'epita' },
+  { icon: '🏗️', key: 'fullstack' },
+  { icon: '📈', key: 'finance' },
+  { icon: '🐳', key: 'selfhosted' },
+] as const
 
 export default function About() {
+  const t = useTranslations('about')
+  const tStats = useTranslations('stats')
   const sectionRef = useRef<HTMLDivElement>(null)
   useReveal(sectionRef)
 
@@ -67,22 +70,20 @@ export default function About() {
           {/* Left — text + 3D orb */}
           <div>
             <p data-reveal className="text-xs font-mono tracking-[0.3em] text-gold uppercase mb-4">
-              01 / À propos
+              {t('eyebrow')}
             </p>
 
             <SplitHeading
-              text="À PROPOS"
+              text={t('heading')}
               className="font-display font-bold text-5xl md:text-6xl leading-tight text-warm-white mb-8"
             />
 
             <p data-reveal className="text-muted text-base md:text-lg leading-relaxed mb-6">
-              {PERSONAL.bio}
+              {t('bio')}
             </p>
 
             <p data-reveal className="text-muted text-base leading-relaxed mb-10">
-              Fasciné par la complexité des systèmes — qu&apos;il s&apos;agisse de pipelines de
-              données, d&apos;architectures microservices ou de marchés financiers. Je recherche des
-              projets où la rigueur technique rencontre un impact réel.
+              {t('paragraph2')}
             </p>
 
             {/* 3D orb */}
@@ -96,14 +97,14 @@ export default function About() {
             <div className="grid grid-cols-3 gap-4 mb-10">
               {STATS.map((stat) => (
                 <div
-                  key={stat.label}
+                  key={stat.key}
                   data-reveal
                   className="text-center border border-border rounded-2xl p-5 bg-dark-2/50 backdrop-blur-sm"
                 >
                   <div className="font-display font-bold text-3xl md:text-4xl gradient-text mb-1">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                   </div>
-                  <p className="text-xs text-muted leading-tight">{stat.label}</p>
+                  <p className="text-xs text-muted leading-tight">{tStats(stat.key)}</p>
                 </div>
               ))}
             </div>
@@ -111,7 +112,7 @@ export default function About() {
             <div className="space-y-3">
               {FEATURES.map((f) => (
                 <div
-                  key={f.label}
+                  key={f.key}
                   data-reveal
                   data-cursor-hover
                   className="group flex items-center gap-4 border border-border rounded-xl px-4 py-3.5 bg-dark-2/30 hover:bg-dark-3/50 hover:border-gold/30 transition-all duration-300"
@@ -120,8 +121,8 @@ export default function About() {
                     {f.icon}
                   </span>
                   <div>
-                    <p className="text-sm font-medium text-warm-white">{f.label}</p>
-                    <p className="text-xs text-muted">{f.desc}</p>
+                    <p className="text-sm font-medium text-warm-white">{t(`features.${f.key}.label`)}</p>
+                    <p className="text-xs text-muted">{t(`features.${f.key}.desc`)}</p>
                   </div>
                   <span className="ml-auto text-gold opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
                     →

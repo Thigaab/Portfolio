@@ -1,18 +1,21 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { PERSONAL } from '@/lib/data'
+import LocaleSwitcher from '@/components/ui/LocaleSwitcher'
 
 const NAV_ITEMS = [
-  { label: 'À propos', href: '#about' },
-  { label: 'Compétences', href: '#skills' },
-  { label: 'Projets', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-]
+  { key: 'about', href: '#about' },
+  { key: 'skills', href: '#skills' },
+  { key: 'projects', href: '#projects' },
+  { key: 'contact', href: '#contact' },
+] as const
 
 export default function Navbar() {
+  const t = useTranslations('nav')
   const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -60,17 +63,20 @@ export default function Navbar() {
               onClick={(e) => handleClick(e, item.href)}
               className="text-sm text-muted hover:text-warm-white transition-colors duration-300 tracking-wide uppercase font-medium"
             >
-              {item.label}
+              {t(item.key)}
             </a>
           ))}
         </nav>
 
-        <a
-          href={`mailto:${PERSONAL.email}`}
-          className="hidden md:flex items-center gap-2 text-sm font-medium text-gold border border-gold/30 rounded-full px-4 py-2 hover:bg-gold/10 transition-all duration-300"
-        >
-          Me contacter
-        </a>
+        <div className="flex items-center gap-4">
+          <LocaleSwitcher />
+          <a
+            href={`mailto:${PERSONAL.email}`}
+            className="hidden md:flex items-center gap-2 text-sm font-medium text-gold border border-gold/30 rounded-full px-4 py-2 hover:bg-gold/10 transition-all duration-300"
+          >
+            {t('cta')}
+          </a>
+        </div>
       </div>
     </header>
   )

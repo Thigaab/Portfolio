@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import dynamic from 'next/dynamic'
+import { useTranslations } from 'next-intl'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { PERSONAL } from '@/lib/data'
@@ -24,6 +25,7 @@ function splitChars(text: string) {
 }
 
 export default function Hero() {
+  const t = useTranslations('hero')
   const containerRef = useRef<HTMLElement>(null)
 
   useGSAP(
@@ -65,7 +67,7 @@ export default function Hero() {
       <Container className="hero-parallax relative z-10 pt-28 pb-24">
         <p className="hero-eyebrow text-xs md:text-sm font-mono tracking-[0.3em] text-gold uppercase mb-6 flex items-center gap-3">
           <span className="inline-block w-8 h-px bg-gold" />
-          Fullstack · DevOps · Finance
+          {t('eyebrow')}
         </p>
 
         <h1 className="font-display font-bold leading-[0.9] mb-2">
@@ -78,7 +80,7 @@ export default function Hero() {
         </h1>
 
         <p className="hero-subtitle mt-8 text-muted text-base md:text-lg max-w-md leading-relaxed">
-          {PERSONAL.bio}
+          {t('bio')}
         </p>
 
         <div className="hero-cta mt-10 flex flex-wrap items-center gap-4">
@@ -91,7 +93,7 @@ export default function Hero() {
               }}
               className="group relative inline-flex items-center gap-3 bg-gold text-dark font-semibold px-7 py-3.5 rounded-full text-sm overflow-hidden transition-shadow duration-300 hover:shadow-[0_0_40px_rgba(212,168,83,0.45)]"
             >
-              <span className="relative z-10">Découvrir mes projets</span>
+              <span className="relative z-10">{t('ctaProjects')}</span>
               <span className="relative z-10 text-lg transition-transform duration-300 group-hover:translate-x-1">→</span>
               <div className="absolute inset-0 bg-gold-light scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
             </a>
@@ -114,7 +116,7 @@ export default function Hero() {
       </Container>
 
       <div className="hero-scroll absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
-        <span className="text-xs font-mono tracking-[0.2em] text-muted uppercase">Scroll</span>
+        <span className="text-xs font-mono tracking-[0.2em] text-muted uppercase">{t('scroll')}</span>
         <div className="w-px h-10 bg-gradient-to-b from-gold to-transparent animate-pulse" />
       </div>
     </section>

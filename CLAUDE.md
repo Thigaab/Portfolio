@@ -14,6 +14,7 @@ leans into a premium dark/gold **finance** aesthetic — keep it that way.
 - **GSAP** + **ScrollTrigger** + `@gsap/react` for animation
 - **Lenis** for smooth scroll
 - **Tailwind CSS v4** (config-less, `@theme` in `globals.css`)
+- **next-intl** for i18n (FR default + EN)
 
 ## Commands
 
@@ -32,7 +33,15 @@ npm run lint
 - `src/components/providers/SmoothScroll.tsx` — Lenis ↔ GSAP wiring.
 - `src/components/sections/` — Hero, About, Skills, Projects, Contact.
 - `src/components/canvas/` — `HeroScene.tsx`, `AboutOrb.tsx` (lazy-loaded via `next/dynamic` `ssr:false`).
-- `src/components/ui/` — Navbar, CustomCursor, ScrollProgress, Magnetic, TiltCard.
+- `src/components/ui/` — Navbar, CustomCursor, ScrollProgress, Magnetic, TiltCard, LocaleSwitcher.
+
+## i18n (next-intl)
+
+- Locales: **`fr` (default) + `en`**, `localePrefix: 'as-needed'` → French at `/`, English at `/en`. Config in `src/i18n/routing.ts`.
+- Routing files: `src/i18n/{routing,navigation,request}.ts`, and **`src/proxy.ts`** (Next 16 renamed `middleware` → `proxy`; it's `createMiddleware(routing)`). `next.config.ts` is wrapped with `createNextIntlPlugin()`.
+- All routed pages live under **`src/app/[locale]/`** (`layout.tsx` renders `<html lang={locale}>` + `NextIntlClientProvider`, calls `setRequestLocale`, exports `generateStaticParams`/`generateMetadata`). `favicon.ico`, `icon.svg`, `globals.css` stay at `src/app/` root.
+- **Translatable text lives in `messages/{fr,en}.json`**, keyed by section. `data.ts` keeps only structural data (ids, tech, links) — projects/stats reference messages via their `id`/`key`. To add a string: add the key to BOTH json files, then `const t = useTranslations('<namespace>')` in the (client) component.
+- Language switch: `LocaleSwitcher` uses locale-aware `Link`/`usePathname` from `src/i18n/navigation.ts`.
 
 ## Design system
 
@@ -55,6 +64,7 @@ Do NOT go back to icosahedron + orbital rings (reads as an atom).
 - **WaveField cursor repulsion**: don't use R3F `state.pointer` — the hero's `z-[1]` gradient overlays cover the canvas with pointer-events, so it stays frozen. Track the cursor from a `window` `mousemove` and derive NDC from the canvas rect. The grid is a tilted plane, so map that cursor via a **raycaster onto the plane + `worldToLocal`** (NOT `pointer.x/y` directly). Points are then shoved radially away (+ `z` dip) from that local point.
 - **Overflow**: `html,body { overflow-x: clip }` + `Section` has `overflow-hidden`; cap decorative glows at `max-w-[90vw]`.
 - Motion should stay **slow/calm** — the user pushed back on fast, high-amplitude animation.
+- **Next 16 renamed `middleware.ts` → `proxy.ts`** (root/`src`, default-exports a `proxy` fn). next-intl's `createMiddleware` goes there. Don't create a `middleware.ts`.
 
 ## Conventions
 

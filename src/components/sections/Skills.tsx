@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { useReveal, SplitHeading } from '@/lib/anim'
 import TiltCard from '@/components/ui/TiltCard'
 import { Section, Container } from '@/components/layout/Section'
@@ -15,6 +16,7 @@ const CATEGORY_STYLE: Record<string, { text: string; chip: string; dot: string }
 }
 
 export default function Skills() {
+  const t = useTranslations('skills')
   const sectionRef = useRef<HTMLDivElement>(null)
   useReveal(sectionRef)
 
@@ -25,10 +27,10 @@ export default function Skills() {
       <Container ref={sectionRef} className="relative z-10">
         <div className="mb-16">
           <p data-reveal className="text-xs font-mono tracking-[0.3em] text-gold uppercase mb-4">
-            02 / Stack technique
+            {t('eyebrow')}
           </p>
           <SplitHeading
-            text="COMPÉTENCES"
+            text={t('heading')}
             className="font-display font-bold text-5xl md:text-6xl leading-tight text-warm-white"
           />
         </div>

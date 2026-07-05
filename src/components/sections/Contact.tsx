@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
+import { useTranslations } from 'next-intl'
 import { useReveal, SplitHeading } from '@/lib/anim'
 import Magnetic from '@/components/ui/Magnetic'
 import { Section, Container } from '@/components/layout/Section'
@@ -41,6 +42,7 @@ const LINKS = [
 ]
 
 export default function Contact() {
+  const t = useTranslations('contact')
   const sectionRef = useRef<HTMLDivElement>(null)
   useReveal(sectionRef)
 
@@ -52,21 +54,20 @@ export default function Contact() {
       <Container ref={sectionRef} className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
         <p data-reveal className="text-xs font-mono tracking-[0.3em] text-gold uppercase mb-6">
-          04 / Contact
+          {t('eyebrow')}
         </p>
 
         <SplitHeading
-          text="PARLONS"
+          text={t('headingLine1')}
           className="font-display font-bold text-5xl md:text-7xl leading-tight text-warm-white"
         />
         <SplitHeading
-          text="ENSEMBLE"
+          text={t('headingLine2')}
           className="font-display font-bold text-5xl md:text-7xl leading-tight gradient-text mb-6"
         />
 
         <p data-reveal className="text-muted text-base md:text-lg leading-relaxed max-w-lg mx-auto mb-12">
-          Ouvert aux opportunités de stage, d&apos;alternance et aux projets ambitieux.
-          N&apos;hésitez pas à me contacter.
+          {t('intro')}
         </p>
 
         <div data-reveal className="mb-14 inline-block">
@@ -75,7 +76,7 @@ export default function Contact() {
               href={`mailto:${PERSONAL.email}`}
               className="group inline-flex items-center gap-3 bg-gradient-to-r from-gold to-amber text-dark font-bold text-base md:text-lg px-8 py-4 rounded-full hover:shadow-[0_0_50px_rgba(212,168,83,0.4)] transition-shadow duration-400"
             >
-              <span>Envoyer un message</span>
+              <span>{t('cta')}</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </a>
           </Magnetic>
@@ -104,7 +105,7 @@ export default function Contact() {
 
         <div className="mt-24 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted font-mono">
           <p>© {new Date().getFullYear()} Thibaut Bonefont</p>
-          <p>Next.js · React Three Fiber · GSAP</p>
+          <p>{t('footerTech')}</p>
         </div>
       </Container>
     </Section>
