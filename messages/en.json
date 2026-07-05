@@ -37,30 +37,39 @@
     "eyebrow": "03 / Selected work",
     "heading": "PROJECTS",
     "viewGithub": "View on GitHub",
+    "visitSite": "Visit the site",
     "privateCode": "Academic project · private code",
+    "details": "View details",
+    "close": "Close",
     "items": {
       "tiger-compiler": {
         "description": "Full compiler for the educational Tiger language — lexical, syntactic and semantic analysis plus code generation.",
+        "long": "A full compiler for Tiger, Andrew Appel's educational language, written in C++. It covers the whole pipeline: lexical (Flex) and syntactic (Bison) analysis, AST construction and traversal, semantic analysis (typing, scopes, bindings), then code generation through LLVM. One of the flagship projects of EPITA's systems track, built over several months.",
         "period": "Feb – May 2026"
       },
       "jws-epibazaar": {
         "description": "Backend for a resource-management game — 3 interconnected apps with a layered architecture, Kafka messaging and the Hibernate ORM.",
+        "long": "The backend of a resource-management game, structured as 3 interconnected Java applications. Layered architecture (controllers, services, DAO), persistence via the Hibernate ORM on PostgreSQL, and asynchronous service-to-service communication through Apache Kafka. The whole stack is containerised with Docker.",
         "period": "Feb 2025"
       },
       "42sh": {
         "description": "Full POSIX shell with AST parsing, command execution, redirections and pipes. Built by a team of 4 in one month.",
+        "long": "A complete POSIX shell written in C, by a team of 4 over one month. Command-line parsing into an AST, command execution, handling of redirections, pipes, variables, built-ins and control structures (if, while, for). A deep dive into how a command interpreter really works.",
         "period": "Jan 2024"
       },
       "ocr-sudoku": {
         "description": "Sudoku grid recognition via image processing and a neural network, followed by automatic solving.",
+        "long": "An app that photographs a sudoku grid, recognises it and solves it automatically. Image processing in C (binarisation, grid detection, deskewing), digit recognition via a neural network trained from scratch, then solving by backtracking. From the raw photo to the completed grid.",
         "period": "Oct 2023"
       },
       "prospectmap": {
         "description": "Automated prospecting tool that identifies local businesses likely to need a new website.",
+        "long": "An automated prospecting tool in Python. It identifies local businesses with a weak or outdated web presence — hence likely to need a new website — by combining public data sources and scraping. Packaged with Docker for easy deployment.",
         "period": "2025"
       },
       "dunes-demis": {
         "description": "Showcase site for the Dunes & Demis crew at the 4L Trophy 2027. A modern, fast interface.",
+        "long": "The showcase site for the Dunes & Demis crew, competing in the 4L Trophy 2027 (a humanitarian and sporting rally across Morocco). A modern, fast site built with Next.js and Tailwind: crew, project and sponsors. Live in production.",
         "period": "2025"
       }
     }

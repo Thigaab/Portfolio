@@ -7,6 +7,10 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+// Shared handle so overlays (e.g. ProjectModal) can pause/resume smooth scroll.
+let lenisInstance: Lenis | null = null
+export const getLenis = () => lenisInstance
+
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
@@ -14,6 +18,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       smoothWheel: true,
       wheelMultiplier: 1,
     })
+    lenisInstance = lenis
 
     lenis.on('scroll', ScrollTrigger.update)
 
@@ -32,6 +37,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     return () => {
       lenis.destroy()
+      lenisInstance = null
       gsap.ticker.remove(tick)
       clearTimeout(t1)
       clearTimeout(t2)

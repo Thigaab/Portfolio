@@ -9,6 +9,7 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import { STATS } from '@/lib/data'
 import { SplitHeading, useReveal } from '@/lib/anim'
 import { Section, Container } from '@/components/layout/Section'
+import TiltCard from '@/components/ui/TiltCard'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
@@ -96,37 +97,37 @@ export default function About() {
           <div>
             <div className="grid grid-cols-3 gap-4 mb-10">
               {STATS.map((stat) => (
-                <div
-                  key={stat.key}
-                  data-reveal
-                  className="text-center border border-border rounded-2xl p-5 bg-dark-2/50 backdrop-blur-sm"
-                >
-                  <div className="font-display font-bold text-3xl md:text-4xl gradient-text mb-1">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <p className="text-xs text-muted leading-tight">{tStats(stat.key)}</p>
+                <div key={stat.key} data-reveal>
+                  <TiltCard
+                    max={6}
+                    className="text-center border border-border rounded-2xl p-5 bg-dark-2/50 backdrop-blur-sm"
+                  >
+                    <div className="relative z-20">
+                      <div className="font-display font-bold text-3xl md:text-4xl gradient-text mb-1">
+                        <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                      </div>
+                      <p className="text-xs text-muted leading-tight">{tStats(stat.key)}</p>
+                    </div>
+                  </TiltCard>
                 </div>
               ))}
             </div>
 
             <div className="space-y-3">
               {FEATURES.map((f) => (
-                <div
-                  key={f.key}
-                  data-reveal
-                  data-cursor-hover
-                  className="group flex items-center gap-4 border border-border rounded-xl px-4 py-3.5 bg-dark-2/30 hover:bg-dark-3/50 hover:border-gold/30 transition-all duration-300"
-                >
-                  <span className="text-xl transition-transform duration-300 group-hover:scale-125">
-                    {f.icon}
-                  </span>
-                  <div>
-                    <p className="text-sm font-medium text-warm-white">{t(`features.${f.key}.label`)}</p>
-                    <p className="text-xs text-muted">{t(`features.${f.key}.desc`)}</p>
-                  </div>
-                  <span className="ml-auto text-gold opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                    →
-                  </span>
+                <div key={f.key} data-reveal>
+                  <TiltCard
+                    max={6}
+                    className="border border-border rounded-xl px-4 py-3.5 bg-dark-2/30"
+                  >
+                    <div className="relative z-20 flex items-center gap-4">
+                      <span className="text-xl">{f.icon}</span>
+                      <div>
+                        <p className="text-sm font-medium text-warm-white">{t(`features.${f.key}.label`)}</p>
+                        <p className="text-xs text-muted">{t(`features.${f.key}.desc`)}</p>
+                      </div>
+                    </div>
+                  </TiltCard>
                 </div>
               ))}
             </div>

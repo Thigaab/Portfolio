@@ -31,7 +31,7 @@ npm run lint
 - `src/components/layout/Section.tsx` — `<Section>` (band) + `<Container>` (centered column). **Every section AND the navbar use these** so left edges align. Don't reintroduce ad-hoc `px-*` paddings.
 - `src/components/layout/BackgroundTexture.tsx` — global CSS background (dotted grid + drifting gold aurora), behind a `relative z-10` content wrapper in `layout.tsx`.
 - `src/components/providers/SmoothScroll.tsx` — Lenis ↔ GSAP wiring.
-- `src/components/sections/` — Hero, About, Skills, Projects, Contact.
+- `src/components/sections/` — Hero, About, Skills, Projects, Contact. Project cards open **`ProjectModal`** (portal to `document.body` — a `fixed` modal must escape the `transform`ed `TiltCard`/Lenis ancestors; `SmoothScroll` exports `getLenis()` so the modal pauses smooth scroll while open). Per-project **cover art is a hand-drawn SVG** at `public/projects/<id>.svg`; long descriptions live in messages `projects.items.<id>.long`; a project's live-site URL is the `website` field in `data.ts`.
 - `src/components/canvas/` — `HeroScene.tsx`, `AboutOrb.tsx` (lazy-loaded via `next/dynamic` `ssr:false`).
 - `src/components/ui/` — Navbar, CustomCursor, ScrollProgress, Magnetic, TiltCard, LocaleSwitcher.
 

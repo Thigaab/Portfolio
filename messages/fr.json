@@ -37,30 +37,39 @@
     "eyebrow": "03 / Réalisations",
     "heading": "PROJETS",
     "viewGithub": "Voir sur GitHub",
+    "visitSite": "Voir le site",
     "privateCode": "Projet académique · code privé",
+    "details": "Voir le détail",
+    "close": "Fermer",
     "items": {
       "tiger-compiler": {
         "description": "Compilateur complet pour le langage éducatif Tiger — analyse lexicale, syntaxique, sémantique et génération de code.",
+        "long": "Un compilateur complet pour Tiger, le langage éducatif d'Andrew Appel, écrit en C++. Il couvre toute la chaîne : analyse lexicale (Flex) et syntaxique (Bison), construction et parcours de l'AST, analyse sémantique (typage, portées, liaisons), puis génération de code via LLVM. L'un des projets majeurs du cursus systèmes de l'EPITA, mené sur plusieurs mois.",
         "period": "Fév – Mai 2026"
       },
       "jws-epibazaar": {
         "description": "Backend pour un jeu de gestion de ressources — 3 applications interconnectées avec architecture en couche, messaging Kafka et ORM Hibernate.",
+        "long": "Le backend d'un jeu de gestion de ressources, structuré en 3 applications Java interconnectées. Architecture en couches (contrôleurs, services, DAO), persistance via l'ORM Hibernate sur PostgreSQL, et communication asynchrone entre services grâce à Apache Kafka. L'ensemble est conteneurisé avec Docker.",
         "period": "Fév 2025"
       },
       "42sh": {
         "description": "Shell POSIX complet avec parsing AST, exécution de commandes, redirections et pipes. Développé en équipe de 4 en un mois.",
+        "long": "Un shell POSIX complet développé en C, en équipe de 4 sur un mois. Parsing de la ligne de commande vers un AST, exécution des commandes, gestion des redirections, des pipes, des variables, des built-ins et des structures de contrôle (if, while, for). Un vrai plongeon dans le fonctionnement d'un interpréteur de commandes.",
         "period": "Jan 2024"
       },
       "ocr-sudoku": {
         "description": "Reconnaissance de grilles de sudoku via traitement d'image et réseau de neurones, suivi d'une résolution automatique.",
+        "long": "Une application qui photographie une grille de sudoku, la reconnaît et la résout automatiquement. Traitement d'image en C (binarisation, détection de la grille, redressement), reconnaissance des chiffres par un réseau de neurones entraîné from scratch, puis résolution par backtracking. De l'image brute à la grille complétée.",
         "period": "Oct 2023"
       },
       "prospectmap": {
         "description": "Outil de prospection automatisé identifiant des entreprises locales susceptibles d'avoir besoin d'un nouveau site web.",
+        "long": "Un outil de prospection automatisé en Python. Il identifie des entreprises locales dont la présence web est faible ou datée — donc susceptibles d'avoir besoin d'un nouveau site — en croisant des sources de données publiques et du scraping. Packagé avec Docker pour un déploiement simple.",
         "period": "2025"
       },
       "dunes-demis": {
         "description": "Site vitrine pour l'équipage Dunes & Demis au 4L Trophy 2027. Interface moderne et rapide.",
+        "long": "Le site vitrine de l'équipage Dunes & Demis, engagé sur le 4L Trophy 2027 (raid humanitaire et sportif au Maroc). Un site moderne et rapide construit avec Next.js et Tailwind : présentation de l'équipage, du projet et des partenaires. En ligne et en production.",
         "period": "2025"
       }
     }

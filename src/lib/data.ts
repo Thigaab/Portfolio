@@ -38,12 +38,15 @@ export const SKILLS = [
   },
 ]
 
-// `id` maps to messages `projects.items.<id>.{description,period}`.
+// `id` maps to messages `projects.items.<id>.{description,long,period}`. `cover`
+// overrides the default cover art at `public/projects/<id>.svg`.
 export const PROJECTS = [
-  { id: 'tiger-compiler', title: 'Tiger Compiler', tech: ['C++', 'LLVM', 'Flex', 'Bison'], type: 'Systems', github: null },
-  { id: 'jws-epibazaar', title: 'JWS Epibazaar', tech: ['Java', 'Hibernate', 'Kafka', 'PostgreSQL', 'Docker'], type: 'Backend', github: null },
-  { id: '42sh', title: '42SH — Shell POSIX', tech: ['C', 'POSIX', 'AST'], type: 'Systems', github: null },
-  { id: 'ocr-sudoku', title: 'OCR Sudoku Solver', tech: ['C', 'Neural Network', 'OCR'], type: 'AI/ML', github: 'https://github.com/touikss/SudokuSolver' },
-  { id: 'prospectmap', title: 'ProspectMap', tech: ['Python', 'Scraping', 'Docker'], type: 'Tools', github: 'https://github.com/Thigaab/ProspectMap' },
-  { id: 'dunes-demis', title: 'Dunes & Demis', tech: ['Next.js', 'React', 'TypeScript', 'Tailwind'], type: 'Frontend', github: 'https://github.com/Thigaab/Dunes-Demis' },
+  { id: 'tiger-compiler', title: 'Tiger Compiler', tech: ['C++', 'LLVM', 'Flex', 'Bison'], type: 'Systems', github: null, website: null, cover: null },
+  { id: 'jws-epibazaar', title: 'JWS Epibazaar', tech: ['Java', 'Hibernate', 'Kafka', 'PostgreSQL', 'Docker'], type: 'Backend', github: null, website: null, cover: null },
+  { id: '42sh', title: '42SH — Shell POSIX', tech: ['C', 'POSIX', 'AST'], type: 'Systems', github: null, website: null, cover: null },
+  { id: 'ocr-sudoku', title: 'OCR Sudoku Solver', tech: ['C', 'Neural Network', 'OCR'], type: 'AI/ML', github: 'https://github.com/touikss/SudokuSolver', website: null, cover: '/projects/ocr-sudoku.png' },
+  { id: 'prospectmap', title: 'ProspectMap', tech: ['Python', 'Scraping', 'Docker'], type: 'Tools', github: 'https://github.com/Thigaab/ProspectMap', website: null, cover: null },
+  { id: 'dunes-demis', title: 'Dunes & Demis', tech: ['Next.js', 'React', 'TypeScript', 'Tailwind'], type: 'Frontend', github: 'https://github.com/Thigaab/Dunes-Demis', website: 'https://dunes-demis.vercel.app', cover: '/projects/dunes-demis.png' },
 ]
+
+export type Project = (typeof PROJECTS)[number]

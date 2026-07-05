@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0c060"/><stop offset=".5" stop-color="#d4a853"/><stop offset="1" stop-color="#e8923a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="36%" r="62%">
+      <stop offset="0" stop-color="#d4a853" stop-opacity=".18"/><stop offset="1" stop-color="#d4a853" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="450" fill="#0a0a0c"/>
+  <rect width="800" height="450" fill="url(#glow)"/>
+  <text x="70" y="360" font-family="ui-monospace,monospace" font-size="150" fill="#d4a853" opacity=".05">{ }</text>
+  <g stroke="url(#g)" stroke-width="3" opacity=".55">
+    <line x1="400" y1="110" x2="285" y2="210"/><line x1="400" y1="110" x2="515" y2="210"/>
+    <line x1="285" y1="210" x2="215" y2="315"/><line x1="285" y1="210" x2="355" y2="315"/>
+    <line x1="515" y1="210" x2="445" y2="315"/><line x1="515" y1="210" x2="585" y2="315"/>
+  </g>
+  <g fill="#0a0a0c" stroke="url(#g)" stroke-width="3">
+    <circle cx="400" cy="110" r="18"/><circle cx="285" cy="210" r="15"/><circle cx="515" cy="210" r="15"/>
+  </g>
+  <g fill="url(#g)">
+    <circle cx="215" cy="315" r="11"/><circle cx="355" cy="315" r="11"/><circle cx="445" cy="315" r="11"/><circle cx="585" cy="315" r="11"/>
+  </g>
+  <text x="70" y="412" font-family="ui-monospace,monospace" font-size="19" letter-spacing="4" fill="#8a6a2a">AST · SEMANTICS · LLVM</text>
+</svg>
