@@ -14,10 +14,12 @@ spec:
       labels:
         app: portfolio
     spec:
+      imagePullSecrets:
+        - name: ghcr-secret
       containers:
         - name: portfolio
-          image: portfolio:latest
-          imagePullPolicy: Never
+          image: ghcr.io/thigaab/portfolio:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources:
