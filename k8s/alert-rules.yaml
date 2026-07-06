@@ -1,0 +1,28 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: portfolio-alerts
+  namespace: default
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+    - name: portfolio.rules
+      rules:
+        - alert: PortfolioPodDown
+          expr: kube_deployment_status_replicas_available{deployment="portfolio", namespace="default"} < 1
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Portfolio site is down"
+            description: "No available replicas for the portfolio deployment for more than 2 minutes."
+
+        - alert: PortfolioPodCrashLooping
+          expr: rate(kube_pod_container_status_restarts_total{namespace="default", pod=~"portfolio-.*"}[15m]) > 0
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Portfolio pod is crash looping"
+            description: "Pod {{ $labels.pod }} has restarted recently, possible CrashLoopBackOff."
