@@ -137,7 +137,7 @@ function ClayStill({
  */
 function HalftoneFloor({ pointer }: { pointer: Pointer }) {
   const SIZE = 30
-  const SEG = 56
+  const SEG = 44
   const geom = useMemo(() => new THREE.PlaneGeometry(SIZE, SIZE, SEG, SEG), [])
   const base = useMemo(() => Float32Array.from(geom.attributes.position.array), [geom])
   const ref = useRef<THREE.Points>(null)
@@ -182,7 +182,7 @@ function HalftoneFloor({ pointer }: { pointer: Pointer }) {
       // the field visibly bends away under the pointer.
       const dx = x - cx
       const dy = y - cy
-      const dist = Math.hypot(dx, dy) || 0.0001
+      const dist = Math.sqrt(dx * dx + dy * dy) || 0.0001
       const influence = Math.exp(-dist * dist * 0.05) // 1 at cursor → ~0 far
       const repel = influence * 2.4
       arr[ix] = x + (dx / dist) * repel
@@ -235,7 +235,7 @@ export default function HeroScene() {
   return (
     <Canvas
       camera={{ position: [0, 0.4, 6.6], fov: 55 }}
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}
       style={{ background: 'transparent' }}
     >

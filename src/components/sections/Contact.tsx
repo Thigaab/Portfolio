@@ -90,7 +90,7 @@ export default function Contact() {
                 href={link.href}
                 target={link.href.startsWith('mailto') ? undefined : '_blank'}
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 border border-line rounded-xl px-5 py-3 bg-surface/60 text-ink-2 hover:text-ink hover:border-iris/35 hover:bg-surface transition-all duration-300"
+                className="flex items-center gap-3 border border-line rounded-xl px-5 py-3 bg-surface text-ink-2 hover:text-ink hover:border-iris/35 transition-colors duration-300"
               >
                 <span className="text-iris">{link.icon}</span>
                 <div className="text-left">

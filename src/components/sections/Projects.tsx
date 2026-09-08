@@ -54,7 +54,7 @@ export default function Projects() {
                   }
                 }}
                 max={6}
-                className="h-full group cursor-pointer border border-line rounded-2xl p-6 bg-surface/75 backdrop-blur-sm shadow-[0_1px_2px_rgba(23,22,29,0.04)] hover:border-iris/35 transition-colors duration-400 flex flex-col"
+                className="h-full group cursor-pointer border border-line rounded-2xl p-6 bg-surface shadow-[0_1px_2px_rgba(23,22,29,0.04)] hover:border-iris/35 transition-colors duration-400 flex flex-col"
               >
                 <div className="relative z-20 flex flex-col h-full">
                   <div className="flex items-start justify-between mb-4">

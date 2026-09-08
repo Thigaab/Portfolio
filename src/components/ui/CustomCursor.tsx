@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
+const INTERACTIVE = 'a, button, [data-cursor-hover]'
+
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
@@ -17,23 +19,46 @@ export default function CustomCursor() {
     let ringX = 0
     let ringY = 0
 
+    // quickTo reuses a single tween instead of allocating a new one on every
+    // mousemove (which can fire well over 100x/s on a high-polling mouse).
+    const dotX = gsap.quickTo(dot, 'x', { duration: 0.1, ease: 'power3.out' })
+    const dotY = gsap.quickTo(dot, 'y', { duration: 0.1, ease: 'power3.out' })
+
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX
       mouseY = e.clientY
-      gsap.to(dot, { x: mouseX, y: mouseY, duration: 0.1, ease: 'power3.out' })
+      dotX(mouseX)
+      dotY(mouseY)
     }
 
-    const onEnter = () => {
-      gsap.to(ring, { scale: 2.5, opacity: 0.5, duration: 0.3 })
-      gsap.to(dot, { scale: 0, duration: 0.3 })
+    /**
+     * Hover state by delegation: two listeners on `document`, forever.
+     * The previous version kept a `MutationObserver` on the whole body and,
+     * on every mutation, re-ran `querySelectorAll` and re-bound enter/leave
+     * handlers without ever removing the old ones. Any React re-render (the
+     * stat counters tick every frame for two seconds) triggered a full
+     * re-scan and leaked a duplicate listener onto every interactive element.
+     */
+    const interactive = (n: EventTarget | null) =>
+      n instanceof Element ? n.closest(INTERACTIVE) : null
+
+    const onOver = (e: MouseEvent) => {
+      // relatedTarget = where the pointer came from; ignore moves that stay
+      // inside the same interactive element.
+      if (interactive(e.target) && !interactive(e.relatedTarget)) {
+        gsap.to(ring, { scale: 2.5, opacity: 0.5, duration: 0.3 })
+        gsap.to(dot, { scale: 0, duration: 0.3 })
+      }
     }
 
-    const onLeave = () => {
-      gsap.to(ring, { scale: 1, opacity: 1, duration: 0.3 })
-      gsap.to(dot, { scale: 1, duration: 0.3 })
+    const onOut = (e: MouseEvent) => {
+      if (interactive(e.target) && !interactive(e.relatedTarget)) {
+        gsap.to(ring, { scale: 1, opacity: 1, duration: 0.3 })
+        gsap.to(dot, { scale: 1, duration: 0.3 })
+      }
     }
 
-    let raf: number
+    let raf = 0
     const followRing = () => {
       ringX += (mouseX - ringX) * 0.1
       ringY += (mouseY - ringY) * 0.1
@@ -42,26 +67,15 @@ export default function CustomCursor() {
     }
     raf = requestAnimationFrame(followRing)
 
-    window.addEventListener('mousemove', onMove)
-
-    const interactables = document.querySelectorAll('a, button, [data-cursor-hover]')
-    interactables.forEach((el) => {
-      el.addEventListener('mouseenter', onEnter)
-      el.addEventListener('mouseleave', onLeave)
-    })
-
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll('a, button, [data-cursor-hover]').forEach((el) => {
-        el.addEventListener('mouseenter', onEnter)
-        el.addEventListener('mouseleave', onLeave)
-      })
-    })
-    observer.observe(document.body, { childList: true, subtree: true })
+    window.addEventListener('mousemove', onMove, { passive: true })
+    document.addEventListener('mouseover', onOver)
+    document.addEventListener('mouseout', onOut)
 
     return () => {
       window.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseover', onOver)
+      document.removeEventListener('mouseout', onOut)
       cancelAnimationFrame(raf)
-      observer.disconnect()
     }
   }, [])
 

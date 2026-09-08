@@ -34,8 +34,8 @@ function ClayBlob() {
         {/* icosahedron = even tessellation, no pole pinching under distortion.
             High detail: MeshDistortMaterial doesn't recompute normals, so
             faceting only vanishes with enough subdivisions. */}
-        {/* ponytail: detail 7 ≈ 328k tris — smooth silhouette without tanking
-            the framerate; detail 8 (1.3M) is overkill for a small blob. */}
+        {/* ponytail: detail 7 = 1280 tris. Cheap; the blob's cost is fill
+            rate, not geometry, so don't trade silhouette away here. */}
         <icosahedronGeometry args={[1.4, 7]} />
         <MeshDistortMaterial
           ref={matRef}
@@ -58,7 +58,7 @@ export default function AboutOrb() {
   return (
     <Canvas
       camera={{ position: [0, 0, 4.2], fov: 45 }}
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
       gl={{ antialias: true, alpha: true }}
       style={{ background: 'transparent' }}
     >

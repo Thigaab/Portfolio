@@ -39,13 +39,17 @@ export default function Hero() {
         .from('.hero-scroll', { opacity: 0, duration: 0.6 }, '-=0.3')
         .from('.hero-canvas', { opacity: 0, duration: 1.4, ease: 'power2.out' }, 0.1)
 
-      // Parallax: content drifts opposite to pointer for depth.
+      // Parallax: content drifts opposite to pointer for depth. quickTo keeps
+      // one tween alive rather than allocating a fresh one per mousemove.
+      const parallax = containerRef.current?.querySelector('.hero-parallax')
+      if (!parallax) return
+      const px = gsap.quickTo(parallax, 'x', { duration: 1, ease: 'power3.out' })
+      const py = gsap.quickTo(parallax, 'y', { duration: 1, ease: 'power3.out' })
       const onMove = (e: MouseEvent) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * -12
-        const y = (e.clientY / window.innerHeight - 0.5) * -10
-        gsap.to('.hero-parallax', { x, y, duration: 1, ease: 'power3.out' })
+        px((e.clientX / window.innerWidth - 0.5) * -12)
+        py((e.clientY / window.innerHeight - 0.5) * -10)
       }
-      window.addEventListener('mousemove', onMove)
+      window.addEventListener('mousemove', onMove, { passive: true })
       return () => window.removeEventListener('mousemove', onMove)
     },
     { scope: containerRef }

@@ -6,18 +6,38 @@ export default function ScrollProgress() {
   const barRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const el = barRef.current
+    if (!el) return
+
+    // `scrollHeight` forces a layout, and the old loop read it on every single
+    // frame. Measure only when the document can actually have resized.
+    let max = 0
+    let last = -1
+    const measure = () => {
+      max = document.documentElement.scrollHeight - window.innerHeight
+    }
+    measure()
+
     let raf = 0
     const update = () => {
-      const el = barRef.current
-      if (el) {
-        const max = document.documentElement.scrollHeight - window.innerHeight
-        const p = max > 0 ? window.scrollY / max : 0
+      const p = max > 0 ? Math.min(window.scrollY / max, 1) : 0
+      if (p !== last) {
+        last = p
         el.style.transform = `scaleX(${p})`
       }
       raf = requestAnimationFrame(update)
     }
     raf = requestAnimationFrame(update)
-    return () => cancelAnimationFrame(raf)
+
+    const ro = new ResizeObserver(measure)
+    ro.observe(document.body)
+    window.addEventListener('resize', measure)
+
+    return () => {
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+      window.removeEventListener('resize', measure)
+    }
   }, [])
 
   return (

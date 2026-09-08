@@ -40,7 +40,7 @@ export default function Skills() {
               <div data-reveal data-reveal-delay={(idx * 0.05).toString()} key={group.category}>
                 <TiltCard
                   data-cursor-hover
-                  className="h-full border border-line rounded-2xl p-5 bg-surface/70 backdrop-blur-sm shadow-[0_1px_2px_rgba(23,22,29,0.04)] hover:border-line-strong transition-colors duration-300 group"
+                  className="h-full border border-line rounded-2xl p-5 bg-surface shadow-[0_1px_2px_rgba(23,22,29,0.04)] hover:border-line-strong transition-colors duration-300 group"
                 >
                   <div className="relative z-20">
                     <div className="flex items-center gap-2 mb-4">

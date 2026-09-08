@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState, type ReactNode } from 'react'
+import { useRef, type ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
 import { useGSAP } from '@gsap/react'
@@ -16,26 +16,28 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 const AboutOrb = dynamic(() => import('@/components/canvas/AboutOrb'), { ssr: false })
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
-  const [count, setCount] = useState(0)
   const ref = useRef<HTMLSpanElement>(null)
-  const triggered = useRef(false)
 
   useGSAP(() => {
+    const el = ref.current
+    if (!el) return
     ScrollTrigger.create({
-      trigger: ref.current,
+      trigger: el,
       start: 'top 90%',
       once: true,
       onEnter: () => {
-        if (triggered.current) return
-        triggered.current = true
         gsap.to(
           { val: 0 },
           {
             val: value,
             duration: 2,
             ease: 'power2.out',
+            // Written straight to the DOM. Going through setState here
+            // re-rendered the whole card on every frame of the count, which
+            // also churned the DOM enough to keep the cursor's old
+            // MutationObserver busy.
             onUpdate: function () {
-              setCount(Math.round(this.targets()[0].val))
+              el.textContent = `${Math.round(this.targets()[0].val)}${suffix}`
             },
           }
         )
@@ -45,8 +47,7 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
   return (
     <span ref={ref} className="tabular-nums">
-      {count}
-      {suffix}
+      0{suffix}
     </span>
   )
 }
@@ -134,7 +135,7 @@ export default function About() {
                 <div key={stat.key} data-reveal>
                   <TiltCard
                     max={6}
-                    className="text-center border border-line rounded-2xl p-5 bg-surface/70 backdrop-blur-sm shadow-[0_1px_2px_rgba(23,22,29,0.04)]"
+                    className="text-center border border-line rounded-2xl p-5 bg-surface shadow-[0_1px_2px_rgba(23,22,29,0.04)]"
                   >
                     <div className="relative z-20">
                       <div className="font-display text-4xl md:text-5xl text-iris mb-1">
@@ -152,7 +153,7 @@ export default function About() {
                 <div key={f.key} data-reveal>
                   <TiltCard
                     max={6}
-                    className="border border-line rounded-xl px-4 py-3.5 bg-surface/60 shadow-[0_1px_2px_rgba(23,22,29,0.04)]"
+                    className="border border-line rounded-xl px-4 py-3.5 bg-surface shadow-[0_1px_2px_rgba(23,22,29,0.04)]"
                   >
                     <div className="relative z-20 flex items-center gap-4">
                       <span className={f.accent}>{f.icon}</span>
