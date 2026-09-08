@@ -24,7 +24,7 @@ export default function ScrollProgress() {
     <div className="fixed top-0 left-0 right-0 z-[60] h-[2px] bg-transparent">
       <div
         ref={barRef}
-        className="h-full origin-left scale-x-0 bg-gradient-to-r from-gold via-gold-light to-amber"
+        className="h-full origin-left scale-x-0 bg-gradient-to-r from-iris via-iris-soft to-coral"
         style={{ willChange: 'transform' }}
       />
     </div>

@@ -48,62 +48,61 @@ export default function Contact() {
 
   return (
     <Section id="contact">
-      <div className="absolute top-0 left-6 right-6 sm:left-8 sm:right-8 lg:left-12 lg:right-12 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] max-w-[95vw] h-[400px] bg-gold/5 blur-[150px] pointer-events-none" />
+      <div className="absolute top-0 left-6 right-6 sm:left-8 sm:right-8 lg:left-12 lg:right-12 h-px bg-line-strong" />
 
       <Container ref={sectionRef} className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
-        <p data-reveal className="text-xs font-mono tracking-[0.3em] text-gold uppercase mb-6">
-          {t('eyebrow')}
-        </p>
+          <p data-reveal className="text-xs font-mono tracking-[0.28em] text-ink-3 uppercase mb-6">
+            {t('eyebrow')}
+          </p>
 
-        <SplitHeading
-          text={t('headingLine1')}
-          className="font-display font-bold text-5xl md:text-7xl leading-tight text-warm-white"
-        />
-        <SplitHeading
-          text={t('headingLine2')}
-          className="font-display font-bold text-5xl md:text-7xl leading-tight gradient-text mb-6"
-        />
+          <SplitHeading
+            text={t('headingLine1')}
+            className="font-display text-6xl md:text-8xl leading-[0.95] tracking-[-0.02em] text-ink"
+          />
+          <SplitHeading
+            text={t('headingLine2')}
+            className="font-display italic text-6xl md:text-8xl leading-[1.05] tracking-[-0.02em] text-iris mb-6"
+          />
 
-        <p data-reveal className="text-muted text-base md:text-lg leading-relaxed max-w-lg mx-auto mb-12">
-          {t('intro')}
-        </p>
+          <p data-reveal className="text-ink-2 text-base md:text-lg leading-relaxed max-w-lg mx-auto mb-12">
+            {t('intro')}
+          </p>
 
-        <div data-reveal className="mb-14 inline-block">
-          <Magnetic strength={0.5}>
-            <a
-              href={`mailto:${PERSONAL.email}`}
-              className="group inline-flex items-center gap-3 bg-gradient-to-r from-gold to-amber text-dark font-bold text-base md:text-lg px-8 py-4 rounded-full hover:shadow-[0_0_50px_rgba(212,168,83,0.4)] transition-shadow duration-400"
-            >
-              <span>{t('cta')}</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-          </Magnetic>
+          <div data-reveal className="mb-14 inline-block">
+            <Magnetic strength={0.5}>
+              <a
+                href={`mailto:${PERSONAL.email}`}
+                className="group inline-flex items-center gap-3 bg-ink text-paper font-medium text-base md:text-lg px-8 py-4 rounded-full transition-colors duration-300 hover:bg-iris"
+              >
+                <span>{t('cta')}</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </a>
+            </Magnetic>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {LINKS.map((link) => (
+              <a
+                key={link.label}
+                data-reveal
+                data-cursor-hover
+                href={link.href}
+                target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 border border-line rounded-xl px-5 py-3 bg-surface/60 text-ink-2 hover:text-ink hover:border-iris/35 hover:bg-surface transition-all duration-300"
+              >
+                <span className="text-iris">{link.icon}</span>
+                <div className="text-left">
+                  <p className="text-xs text-ink-3 font-mono">{link.label}</p>
+                  <p className="text-sm font-medium">{link.value}</p>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          {LINKS.map((link) => (
-            <a
-              key={link.label}
-              data-reveal
-              data-cursor-hover
-              href={link.href}
-              target={link.href.startsWith('mailto') ? undefined : '_blank'}
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 border border-border rounded-xl px-5 py-3 text-muted hover:text-warm-white hover:border-gold/30 hover:bg-dark-3/50 transition-all duration-300"
-            >
-              <span className="text-gold">{link.icon}</span>
-              <div className="text-left">
-                <p className="text-xs text-muted/70 font-mono">{link.label}</p>
-                <p className="text-sm font-medium">{link.value}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-        </div>
-
-        <div className="mt-24 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted font-mono">
+        <div className="mt-24 pt-8 border-t border-line flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-ink-3 font-mono">
           <p>© {new Date().getFullYear()} Thibaut Bonefont</p>
           <p>{t('footerTech')}</p>
         </div>

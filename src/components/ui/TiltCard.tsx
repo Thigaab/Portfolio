@@ -4,7 +4,7 @@ import { useRef, type ReactNode } from 'react'
 import gsap from 'gsap'
 
 /**
- * 3D-tilt card that rotates toward the cursor and renders a radial gold glow
+ * 3D-tilt card that rotates toward the cursor and renders a soft iris glow
  * that tracks the pointer. Used for project/skill cards.
  */
 export default function TiltCard({
@@ -40,7 +40,7 @@ export default function TiltCard({
         opacity: 1,
         duration: 0.3,
       })
-      glowRef.current.style.background = `radial-gradient(420px circle at ${px * 100}% ${py * 100}%, rgba(212,168,83,0.14), transparent 60%)`
+      glowRef.current.style.background = `radial-gradient(420px circle at ${px * 100}% ${py * 100}%, rgba(74,58,237,0.09), transparent 60%)`
     }
   }
 

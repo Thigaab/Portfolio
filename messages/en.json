@@ -7,21 +7,33 @@
     "cta": "Get in touch"
   },
   "hero": {
-    "eyebrow": "Fullstack · DevOps · Finance",
-    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from code to deployment — with a particular passion for finance.",
+    "eyebrow": "Fullstack · DevOps · Systems",
+    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from the compiler up to the interface, and ship them myself.",
     "ctaProjects": "Explore my projects",
     "scroll": "Scroll"
   },
   "about": {
     "eyebrow": "01 / About",
-    "heading": "ABOUT",
-    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from code to deployment — with a particular passion for finance.",
-    "paragraph2": "Fascinated by the complexity of systems — whether data pipelines, microservice architectures or financial markets. I look for projects where technical rigor meets real impact.",
+    "heading": "About",
+    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from the compiler up to the interface, and ship them myself.",
+    "paragraph2": "What draws me in is the complexity of systems: a data pipeline, a microservice architecture, a compiler. I look for projects where technical rigor turns into real impact.",
     "features": {
-      "epita": { "label": "EPITA Paris", "desc": "Engineering degree, class of 2027" },
-      "fullstack": { "label": "Fullstack & DevOps", "desc": "From code to deployment" },
-      "finance": { "label": "Finance", "desc": "Quantitative systems" },
-      "selfhosted": { "label": "Self-hosted", "desc": "Personal Docker infrastructure" }
+      "epita": {
+        "label": "EPITA Paris",
+        "desc": "Engineering degree, class of 2027"
+      },
+      "fullstack": {
+        "label": "Fullstack & DevOps",
+        "desc": "From code to deployment"
+      },
+      "systems": {
+        "label": "Systems & low level",
+        "desc": "Compilers, shells, C/C++"
+      },
+      "selfhosted": {
+        "label": "Self-hosted",
+        "desc": "Personal Docker infrastructure"
+      }
     }
   },
   "stats": {
@@ -31,11 +43,11 @@
   },
   "skills": {
     "eyebrow": "02 / Tech stack",
-    "heading": "SKILLS"
+    "heading": "Skills"
   },
   "projects": {
     "eyebrow": "03 / Selected work",
-    "heading": "PROJECTS",
+    "heading": "Projects",
     "viewGithub": "View on GitHub",
     "visitSite": "Visit the site",
     "privateCode": "Academic project · private code",
@@ -43,12 +55,12 @@
     "close": "Close",
     "items": {
       "tiger-compiler": {
-        "description": "Full compiler for the educational Tiger language — lexical, syntactic and semantic analysis plus code generation.",
+        "description": "Full compiler for the educational Tiger language: lexical, syntactic and semantic analysis plus code generation.",
         "long": "A full compiler for Tiger, Andrew Appel's educational language, written in C++. It covers the whole pipeline: lexical (Flex) and syntactic (Bison) analysis, AST construction and traversal, semantic analysis (typing, scopes, bindings), then code generation through LLVM. One of the flagship projects of EPITA's systems track, built over several months.",
-        "period": "Feb – May 2026"
+        "period": "Feb to May 2026"
       },
       "jws-epibazaar": {
-        "description": "Backend for a resource-management game — 3 interconnected apps with a layered architecture, Kafka messaging and the Hibernate ORM.",
+        "description": "Backend for a resource-management game: 3 interconnected apps with a layered architecture, Kafka messaging and the Hibernate ORM.",
         "long": "The backend of a resource-management game, structured as 3 interconnected Java applications. Layered architecture (controllers, services, DAO), persistence via the Hibernate ORM on PostgreSQL, and asynchronous service-to-service communication through Apache Kafka. The whole stack is containerised with Docker.",
         "period": "Feb 2025"
       },
@@ -64,7 +76,7 @@
       },
       "prospectmap": {
         "description": "Automated prospecting tool that identifies local businesses likely to need a new website.",
-        "long": "An automated prospecting tool in Python. It identifies local businesses with a weak or outdated web presence — hence likely to need a new website — by combining public data sources and scraping. Packaged with Docker for easy deployment.",
+        "long": "An automated prospecting tool in Python. It identifies local businesses with a weak or outdated web presence, hence likely to need a new website, by combining public data sources and scraping. Packaged with Docker for easy deployment.",
         "period": "2025"
       },
       "dunes-demis": {
@@ -76,14 +88,14 @@
   },
   "contact": {
     "eyebrow": "04 / Contact",
-    "headingLine1": "LET'S",
-    "headingLine2": "TALK",
+    "headingLine1": "Let's",
+    "headingLine2": "talk",
     "intro": "Open to internships, apprenticeships and ambitious projects. Feel free to reach out.",
     "cta": "Send a message",
     "footerTech": "Next.js · React Three Fiber · GSAP"
   },
   "metadata": {
-    "title": "Thibaut Bonefont — Fullstack Engineer",
-    "description": "Portfolio of Thibaut Bonefont, Fullstack & DevOps engineer, student at EPITA Paris. Focused on distributed systems and finance."
+    "title": "Thibaut Bonefont, Fullstack Engineer",
+    "description": "Portfolio of Thibaut Bonefont, Fullstack & DevOps engineer, student at EPITA Paris. Systems, back-end and infrastructure."
   }
 }

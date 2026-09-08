@@ -69,12 +69,12 @@ export default function CustomCursor() {
     <>
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-gold pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2"
+        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-iris pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2"
         aria-hidden="true"
       />
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-gold pointer-events-none z-[9997] -translate-x-1/2 -translate-y-1/2"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-iris/60 pointer-events-none z-[9997] -translate-x-1/2 -translate-y-1/2"
         aria-hidden="true"
       />
     </>

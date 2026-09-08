@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Space_Grotesk } from 'next/font/google'
+import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider, hasLocale } from 'next-intl'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -21,10 +21,11 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
+const instrumentSerif = Instrument_Serif({
+  variable: '--font-instrument-serif',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: '400',
+  style: ['normal', 'italic'],
 })
 
 type Props = {
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t('title'),
     description: t('description'),
-    keywords: ['fullstack', 'devops', 'finance', 'epita', 'react', 'java', 'docker'],
+    keywords: ['fullstack', 'devops', 'epita', 'react', 'java', 'docker', 'c++', 'compilateur'],
     alternates: {
       canonical: locale === routing.defaultLocale ? '/' : `/${locale}`,
       languages: { fr: '/', en: '/en' },
@@ -58,11 +59,11 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
-      <body className="bg-dark text-warm-white antialiased overflow-x-hidden">
+      <body className="bg-paper text-ink antialiased overflow-x-hidden">
         <BackgroundTexture />
-        <div className="noise-overlay" aria-hidden="true" />
+        <div className="grain-overlay" aria-hidden="true" />
         <NextIntlClientProvider>
           <SmoothScroll>
             <CustomCursor />

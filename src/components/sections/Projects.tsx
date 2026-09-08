@@ -9,11 +9,11 @@ import { PROJECTS, type Project } from '@/lib/data'
 import ProjectModal from '@/components/sections/ProjectModal'
 
 const TYPE_COLORS: Record<string, string> = {
-  Systems: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
-  Backend: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
-  Frontend: 'bg-sky-500/10 text-sky-300 border-sky-500/20',
-  'AI/ML': 'bg-pink-500/10 text-pink-300 border-pink-500/20',
-  Tools: 'bg-amber-500/10 text-amber-300 border-amber-500/20',
+  Systems: 'bg-plum/5 text-plum border-plum/25',
+  Backend: 'bg-moss/5 text-moss border-moss/25',
+  Frontend: 'bg-iris/5 text-iris border-iris/25',
+  'AI/ML': 'bg-coral/5 text-coral border-coral/25',
+  Tools: 'bg-ochre/5 text-ochre border-ochre/30',
 }
 
 export default function Projects() {
@@ -25,16 +25,16 @@ export default function Projects() {
 
   return (
     <Section id="projects">
-      <div className="absolute top-0 left-6 right-6 sm:left-8 sm:right-8 lg:left-12 lg:right-12 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute top-0 left-6 right-6 sm:left-8 sm:right-8 lg:left-12 lg:right-12 h-px bg-line-strong" />
 
       <Container ref={sectionRef}>
         <div className="mb-16">
-          <p data-reveal className="text-xs font-mono tracking-[0.3em] text-gold uppercase mb-4">
+          <p data-reveal className="text-xs font-mono tracking-[0.28em] text-ink-3 uppercase mb-4">
             {t('eyebrow')}
           </p>
           <SplitHeading
             text={t('heading')}
-            className="font-display font-bold text-5xl md:text-6xl leading-tight text-warm-white"
+            className="font-display text-6xl md:text-7xl leading-[0.95] tracking-[-0.02em] text-ink"
           />
         </div>
 
@@ -54,21 +54,21 @@ export default function Projects() {
                   }
                 }}
                 max={6}
-                className="h-full group cursor-pointer border border-border rounded-2xl p-6 bg-dark-2/40 backdrop-blur-sm hover:border-gold/30 transition-colors duration-400 flex flex-col"
+                className="h-full group cursor-pointer border border-line rounded-2xl p-6 bg-surface/75 backdrop-blur-sm shadow-[0_1px_2px_rgba(23,22,29,0.04)] hover:border-iris/35 transition-colors duration-400 flex flex-col"
               >
                 <div className="relative z-20 flex flex-col h-full">
                   <div className="flex items-start justify-between mb-4">
-                    <span className={`text-[10px] font-mono font-semibold uppercase tracking-widest px-2.5 py-1 rounded-md border ${TYPE_COLORS[project.type] ?? 'bg-gold/10 text-gold border-gold/20'}`}>
+                    <span className={`text-[10px] font-mono font-semibold uppercase tracking-widest px-2.5 py-1 rounded-md border ${TYPE_COLORS[project.type] ?? 'bg-iris/5 text-iris border-iris/25'}`}>
                       {project.type}
                     </span>
-                    <span className="text-xs text-muted font-mono">{t(`items.${project.id}.period`)}</span>
+                    <span className="text-xs text-ink-3 font-mono">{t(`items.${project.id}.period`)}</span>
                   </div>
 
-                  <h3 className="font-display font-bold text-lg text-warm-white mb-3 group-hover:text-gold transition-colors duration-300">
+                  <h3 className="font-display text-2xl text-ink mb-3 leading-tight group-hover:text-iris transition-colors duration-300">
                     {project.title}
                   </h3>
 
-                  <p className="text-sm text-muted leading-relaxed mb-5 flex-1">
+                  <p className="text-sm text-ink-2 leading-relaxed mb-5 flex-1">
                     {t(`items.${project.id}.description`)}
                   </p>
 
@@ -76,14 +76,14 @@ export default function Projects() {
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="text-[11px] px-2 py-0.5 rounded-md bg-dark-4 text-muted border border-dark-4 font-mono"
+                        className="text-[11px] px-2 py-0.5 rounded-md bg-paper-2 text-ink-2 border border-line font-mono"
                       >
                         {t}
                       </span>
                     ))}
                   </div>
 
-                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-medium text-gold">
+                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-medium text-iris">
                     {t('details')}
                     <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
                   </span>

@@ -1,9 +1,11 @@
 'use client'
 
-import { useRef, useMemo, useEffect, Suspense } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Float, Environment, Points, PointMaterial, Sparkles, Preload } from '@react-three/drei'
+import { Float, RoundedBox } from '@react-three/drei'
 import * as THREE from 'three'
+
+const PAPER = '#f4f1ea'
 
 /** Scroll progress across the first viewport (ref only — no re-renders). */
 function useScrollProgress() {
@@ -19,125 +21,15 @@ function useScrollProgress() {
   return progress
 }
 
-const UP = new THREE.Color('#E8B24A')
-const UP_EMISSIVE = new THREE.Color('#A9781F')
-const DOWN = new THREE.Color('#5A4424')
-const DOWN_EMISSIVE = new THREE.Color('#2A1E0C')
+type Pointer = { ndc: React.RefObject<THREE.Vector2>; active: React.RefObject<boolean> }
 
-/** Animated 3D candlestick chart — the finance-themed centerpiece. */
-function CandleChart({ progress }: { progress: React.RefObject<number> }) {
-  const COUNT = 14
-  const SPACING = 0.42
-
-  const candles = useMemo(
-    () =>
-      Array.from({ length: COUNT }, (_, i) => ({
-        x: (i - (COUNT - 1) / 2) * SPACING,
-        phase: Math.random() * Math.PI * 2,
-        speed: 0.12 + Math.random() * 0.16,
-        trend: i / (COUNT - 1),
-      })),
-    []
-  )
-
-  const groupRef = useRef<THREE.Group>(null)
-  const bodyRefs = useRef<THREE.Mesh[]>([])
-  const wickRefs = useRef<THREE.Mesh[]>([])
-
-  // Glowing trend line connecting the closes.
-  const line = useMemo(() => {
-    const geo = new THREE.BufferGeometry()
-    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(COUNT * 3), 3))
-    const mat = new THREE.LineBasicMaterial({ color: '#F0C060', transparent: true, opacity: 0.85 })
-    return new THREE.Line(geo, mat)
-  }, [])
-
-  useFrame((state, delta) => {
-    const t = state.clock.elapsedTime
-    const posAttr = line.geometry.attributes.position as THREE.BufferAttribute | undefined
-    const linePos = posAttr?.array as Float32Array | undefined
-
-    candles.forEach((c, i) => {
-      const base = -0.9 + c.trend * 1.7
-      const close = base + Math.sin(t * c.speed + c.phase) * 0.5
-      const open = base + Math.sin(t * c.speed + c.phase - 0.6) * 0.5
-      const top = Math.max(open, close)
-      const bot = Math.min(open, close)
-      const high = top + 0.22
-      const low = bot - 0.22
-      const up = close >= open
-
-      const body = bodyRefs.current[i]
-      if (body) {
-        const h = Math.max(0.07, top - bot)
-        body.position.y = (top + bot) / 2
-        body.scale.y = h
-        const mat = body.material as THREE.MeshStandardMaterial
-        mat.color.copy(up ? UP : DOWN)
-        mat.emissive.copy(up ? UP_EMISSIVE : DOWN_EMISSIVE)
-      }
-      const wick = wickRefs.current[i]
-      if (wick) {
-        wick.position.y = (high + low) / 2
-        wick.scale.y = Math.max(0.01, high - low)
-      }
-
-      if (linePos) {
-        linePos[i * 3] = c.x
-        linePos[i * 3 + 1] = close
-        linePos[i * 3 + 2] = 0.18
-      }
-    })
-    if (posAttr) posAttr.needsUpdate = true
-
-    const g = groupRef.current
-    if (g) {
-      const p = progress.current
-      g.rotation.y = THREE.MathUtils.damp(g.rotation.y, state.pointer.x * 0.4, 1.4, delta)
-      g.rotation.x = THREE.MathUtils.damp(g.rotation.x, -state.pointer.y * 0.25 + p * 0.4, 1.4, delta)
-      g.position.y = THREE.MathUtils.damp(g.position.y, p * 2, 2, delta)
-      const s = 1 - p * 0.3
-      g.scale.setScalar(THREE.MathUtils.damp(g.scale.x, s, 2, delta))
-    }
-  })
-
-  return (
-    <group ref={groupRef}>
-      {candles.map((c, i) => (
-        <group key={i} position={[c.x, 0, 0]}>
-          <mesh ref={(el) => { if (el) wickRefs.current[i] = el }}>
-            <boxGeometry args={[0.035, 1, 0.035]} />
-            <meshStandardMaterial color="#D4A853" metalness={0.6} roughness={0.4} />
-          </mesh>
-          <mesh ref={(el) => { if (el) bodyRefs.current[i] = el }}>
-            <boxGeometry args={[0.24, 1, 0.24]} />
-            <meshStandardMaterial metalness={0.7} roughness={0.28} emissiveIntensity={0.5} />
-          </mesh>
-        </group>
-      ))}
-      <primitive object={line} />
-      <Sparkles count={35} scale={[6, 3, 3]} size={2.5} speed={0.3} color="#F0C060" opacity={0.5} />
-    </group>
-  )
-}
-
-/** Undulating point grid that ripples away from the cursor — a live data field. */
-function WaveField() {
-  const SIZE = 30
-  const SEG = 56
-  const geom = useMemo(() => new THREE.PlaneGeometry(SIZE, SIZE, SEG, SEG), [])
-  const base = useMemo(() => Float32Array.from(geom.attributes.position.array), [geom])
-  const ref = useRef<THREE.Points>(null)
-
-  // Reusable math objects + the smoothed cursor position in the grid's local space.
-  const plane = useMemo(() => new THREE.Plane(), [])
-  const normal = useMemo(() => new THREE.Vector3(), [])
-  const hit = useMemo(() => new THREE.Vector3(), [])
-  const cursor = useRef(new THREE.Vector2(9999, 9999))
-
-  // The hero overlays (gradients, text) sit on top of the canvas with
-  // pointer-events, so R3F's `state.pointer` never updates here. Track the
-  // real cursor from `window` and derive NDC from the canvas rect ourselves.
+/**
+ * The real cursor, in canvas NDC. R3F's own `state.pointer` is useless here:
+ * the hero's gradient/text overlays sit on top of the canvas and swallow every
+ * pointer event, so it would stay frozen at its initial value. Read `window`
+ * instead and derive NDC from the canvas rect.
+ */
+function usePointerNDC(): Pointer {
   const { gl } = useThree()
   const ndc = useRef(new THREE.Vector2())
   const active = useRef(false)
@@ -154,18 +46,116 @@ function WaveField() {
     window.addEventListener('mousemove', onMove, { passive: true })
     return () => window.removeEventListener('mousemove', onMove)
   }, [gl])
+  return { ndc, active }
+}
+
+/**
+ * A loose still-life of soft clay objects, offset to the right so it never
+ * fights the left-aligned hero type. Matte physical materials + studio lights
+ * only — deliberately no `<Environment>`, so nothing can suspend and blank
+ * the canvas mid-load.
+ */
+function ClayStill({
+  pointer,
+  progress,
+}: {
+  pointer: Pointer
+  progress: React.RefObject<number>
+}) {
+  const groupRef = useRef<THREE.Group>(null)
+  const knotRef = useRef<THREE.Mesh>(null)
+
+  useFrame((state, delta) => {
+    const knot = knotRef.current
+    if (knot) {
+      knot.rotation.y += delta * 0.14
+      knot.rotation.x += delta * 0.05
+    }
+
+    const g = groupRef.current
+    if (!g) return
+    const p = progress.current
+    const { x, y } = pointer.ndc.current
+    g.rotation.y = THREE.MathUtils.damp(g.rotation.y, x * 0.34, 1.4, delta)
+    g.rotation.x = THREE.MathUtils.damp(g.rotation.x, -y * 0.2 + p * 0.35, 1.4, delta)
+    g.position.y = THREE.MathUtils.damp(g.position.y, p * 2.2, 2, delta)
+    g.scale.setScalar(THREE.MathUtils.damp(g.scale.x, 1 - p * 0.28, 2, delta))
+  })
+
+  return (
+    <group ref={groupRef} position={[1.9, 0.1, 0]}>
+      <Float speed={0.9} rotationIntensity={0.15} floatIntensity={0.5}>
+        <mesh ref={knotRef}>
+          <torusKnotGeometry args={[1.15, 0.4, 240, 40]} />
+          <meshPhysicalMaterial
+            color="#4a3aed"
+            roughness={0.32}
+            metalness={0}
+            clearcoat={0.9}
+            clearcoatRoughness={0.32}
+            sheen={0.5}
+            sheenColor="#ffb49c"
+          />
+        </mesh>
+      </Float>
+
+      <Float speed={1.3} rotationIntensity={0.3} floatIntensity={0.9}>
+        <mesh position={[-2.5, 1.35, -0.6]}>
+          <sphereGeometry args={[0.62, 64, 64]} />
+          <meshPhysicalMaterial color="#ff6a45" roughness={0.5} metalness={0} clearcoat={0.5} />
+        </mesh>
+      </Float>
+
+      <Float speed={0.7} rotationIntensity={0.5} floatIntensity={0.7}>
+        <mesh position={[1.55, -1.75, 0.7]} rotation={[0.5, 0, -0.8]}>
+          <capsuleGeometry args={[0.3, 0.95, 16, 32]} />
+          <meshPhysicalMaterial color="#fbf9f5" roughness={0.6} metalness={0} clearcoat={0.35} />
+        </mesh>
+      </Float>
+
+      <Float speed={1.05} rotationIntensity={0.45} floatIntensity={0.8}>
+        <RoundedBox args={[0.82, 0.82, 0.82]} radius={0.19} smoothness={5} position={[-1.7, -1.9, -1.4]}>
+          <meshPhysicalMaterial color="#a97a18" roughness={0.45} metalness={0} clearcoat={0.6} />
+        </RoundedBox>
+      </Float>
+
+      <Float speed={1.5} rotationIntensity={0.2} floatIntensity={1.1}>
+        <mesh position={[2.7, 1.75, -1.8]}>
+          <sphereGeometry args={[0.3, 48, 48]} />
+          <meshPhysicalMaterial color="#7a6bff" roughness={0.4} metalness={0} clearcoat={0.7} />
+        </mesh>
+      </Float>
+    </group>
+  )
+}
+
+/**
+ * Halftone floor: a point grid that swells gently and tears open a crater that
+ * flees the cursor. The grid is a tilted plane, so the cursor has to be
+ * raycast onto that plane and brought into local space — NDC can't be used
+ * directly as grid coordinates.
+ */
+function HalftoneFloor({ pointer }: { pointer: Pointer }) {
+  const SIZE = 30
+  const SEG = 56
+  const geom = useMemo(() => new THREE.PlaneGeometry(SIZE, SIZE, SEG, SEG), [])
+  const base = useMemo(() => Float32Array.from(geom.attributes.position.array), [geom])
+  const ref = useRef<THREE.Points>(null)
+
+  const plane = useMemo(() => new THREE.Plane(), [])
+  const normal = useMemo(() => new THREE.Vector3(), [])
+  const hit = useMemo(() => new THREE.Vector3(), [])
+  const cursor = useRef(new THREE.Vector2(9999, 9999))
 
   useFrame((state, delta) => {
     const mesh = ref.current
     if (!mesh) return
     mesh.updateMatrixWorld()
 
-    // Build the grid's surface as a world-space plane, then raycast the
-    // cursor onto it and bring the hit point into the grid's local space.
     normal.set(0, 0, 1).applyQuaternion(mesh.quaternion).normalize()
     plane.setFromNormalAndCoplanarPoint(normal, mesh.position)
-    state.raycaster.setFromCamera(ndc.current, state.camera)
-    if (active.current && state.raycaster.ray.intersectPlane(plane, hit)) {
+    state.raycaster.setFromCamera(pointer.ndc.current, state.camera)
+    if (pointer.active.current && state.raycaster.ray.intersectPlane(plane, hit)) {
       mesh.worldToLocal(hit)
       cursor.current.x += (hit.x - cursor.current.x) * 0.09
       cursor.current.y += (hit.y - cursor.current.y) * 0.09
@@ -181,16 +171,15 @@ function WaveField() {
       const x = base[ix]
       const y = base[ix + 1]
 
-      // Gentle idle swell so the grid breathes even without the mouse.
+      // Gentle idle swell so the field breathes even without the mouse.
       const wave =
         Math.sin(x * 0.3 + t * 0.25) * 0.3 +
         Math.cos(y * 0.26 + t * 0.2) * 0.3 +
         Math.sin((x + y) * 0.14 + t * 0.15) * 0.18
 
-      // In-plane repulsion: each point is shoved directly away from the
-      // projected cursor, strongest next to it, fading with distance — the
-      // grid tears open a moving crater that flees the cursor. `z` also dips
-      // away so the field visibly bends down under the pointer.
+      // In-plane repulsion: each dot is shoved directly away from the projected
+      // cursor, strongest next to it, fading with distance. `z` dips too, so
+      // the field visibly bends away under the pointer.
       const dx = x - cx
       const dy = y - cy
       const dist = Math.hypot(dx, dy) || 0.0001
@@ -201,59 +190,43 @@ function WaveField() {
       arr[ix + 2] = wave - influence * 1.1
     }
     pos.needsUpdate = true
-    mesh.rotation.z = THREE.MathUtils.damp(mesh.rotation.z, ndc.current.x * 0.03, 1.2, delta)
+    mesh.rotation.z = THREE.MathUtils.damp(mesh.rotation.z, pointer.ndc.current.x * 0.03, 1.2, delta)
   })
 
   return (
-    <points ref={ref} geometry={geom} rotation={[-Math.PI / 2.1, 0, 0]} position={[0, -3.4, -1]}>
+    <points ref={ref} geometry={geom} rotation={[-Math.PI / 2.1, 0, 0]} position={[0, -3.3, -1]}>
       <pointsMaterial
-        color="#D4A853"
-        size={0.035}
+        color="#17161d"
+        size={0.032}
         sizeAttenuation
         transparent
-        opacity={0.6}
+        opacity={0.42}
         depthWrite={false}
       />
     </points>
   )
 }
 
-function ParticleField() {
-  const count = 1800
-  const positions = useMemo(() => {
-    const arr = new Float32Array(count * 3)
-    for (let i = 0; i < count; i++) {
-      const r = Math.random() * 16 + 6
-      const theta = Math.random() * Math.PI * 2
-      const phi = Math.acos(Math.random() * 2 - 1)
-      arr[i * 3] = r * Math.sin(phi) * Math.cos(theta)
-      arr[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta)
-      arr[i * 3 + 2] = r * Math.cos(phi)
-    }
-    return arr
-  }, [])
-
-  const ref = useRef<THREE.Points>(null)
+function CameraRig({ pointer }: { pointer: Pointer }) {
   useFrame((state, delta) => {
-    if (!ref.current) return
-    ref.current.rotation.y += delta * 0.012
-    ref.current.rotation.x = THREE.MathUtils.damp(ref.current.rotation.x, state.pointer.x * 0.06, 1.2, delta)
-  })
-
-  return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled>
-      <PointMaterial transparent color="#D4A853" size={0.018} sizeAttenuation depthWrite={false} opacity={0.45} />
-    </Points>
-  )
-}
-
-function CameraRig() {
-  useFrame((state, delta) => {
-    state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, state.pointer.x * 0.7, 1.2, delta)
-    state.camera.position.y = THREE.MathUtils.damp(state.camera.position.y, state.pointer.y * 0.4, 1.2, delta)
+    const { x, y } = pointer.ndc.current
+    state.camera.position.x = THREE.MathUtils.damp(state.camera.position.x, x * 0.7, 1.2, delta)
+    state.camera.position.y = THREE.MathUtils.damp(state.camera.position.y, y * 0.4 + 0.4, 1.2, delta)
     state.camera.lookAt(0, 0, 0)
   })
   return null
+}
+
+/** Everything inside the Canvas, so the pointer is tracked once and shared. */
+function Scene({ progress }: { progress: React.RefObject<number> }) {
+  const pointer = usePointerNDC()
+  return (
+    <>
+      <ClayStill pointer={pointer} progress={progress} />
+      <HalftoneFloor pointer={pointer} />
+      <CameraRig pointer={pointer} />
+    </>
+  )
 }
 
 export default function HeroScene() {
@@ -261,28 +234,17 @@ export default function HeroScene() {
 
   return (
     <Canvas
-      camera={{ position: [0, 0.4, 6], fov: 60 }}
+      camera={{ position: [0, 0.4, 6.6], fov: 55 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
       style={{ background: 'transparent' }}
     >
-      <fog attach="fog" args={['#050505', 7, 19]} />
-      <ambientLight intensity={0.25} />
-      <pointLight position={[6, 8, 8]} color="#FFD770" intensity={2.6} />
-      <pointLight position={[-8, -2, -6]} color="#FF8C30" intensity={1} />
-      <pointLight position={[0, 6, 4]} color="#FFF0C0" intensity={0.8} />
-
-      <Float speed={0.6} rotationIntensity={0.1} floatIntensity={0.4}>
-        <CandleChart progress={progress} />
-      </Float>
-      <WaveField />
-      <ParticleField />
-      <CameraRig />
-
-      <Suspense fallback={null}>
-        <Environment preset="city" />
-        <Preload all />
-      </Suspense>
+      <fog attach="fog" args={[PAPER, 10, 24]} />
+      <hemisphereLight args={['#ffffff', '#d9d1c0', 1.1]} />
+      <directionalLight position={[5, 7, 6]} intensity={2.4} color="#fff4e4" />
+      <directionalLight position={[-6, 2, -4]} intensity={1.1} color="#c3bbff" />
+      <pointLight position={[2, -3, 4]} intensity={12} distance={14} color="#ffb49c" />
+      <Scene progress={progress} />
     </Canvas>
   )
 }

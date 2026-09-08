@@ -44,15 +44,15 @@ export default function Navbar() {
   return (
     <header
       ref={navRef}
-      className="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-500 [&.nav-scrolled]:bg-dark/80 [&.nav-scrolled]:backdrop-blur-md [&.nav-scrolled]:border-b [&.nav-scrolled]:border-border"
+      className="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-500 [&.nav-scrolled]:bg-paper/85 [&.nav-scrolled]:backdrop-blur-md [&.nav-scrolled]:border-b [&.nav-scrolled]:border-line"
     >
       <div className="mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12 flex items-center justify-between">
         <a
           href="#"
-          className="font-display font-bold text-xl tracking-tight gradient-text"
+          className="font-display text-2xl tracking-tight text-ink"
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
         >
-          TB.
+          T<span className="italic text-iris">B</span>.
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -61,7 +61,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
-              className="text-sm text-muted hover:text-warm-white transition-colors duration-300 tracking-wide uppercase font-medium"
+              className="text-sm text-ink-2 hover:text-ink transition-colors duration-300 tracking-wide uppercase font-medium"
             >
               {t(item.key)}
             </a>
@@ -72,7 +72,7 @@ export default function Navbar() {
           <LocaleSwitcher />
           <a
             href={`mailto:${PERSONAL.email}`}
-            className="hidden md:flex items-center gap-2 text-sm font-medium text-gold border border-gold/30 rounded-full px-4 py-2 hover:bg-gold/10 transition-all duration-300"
+            className="hidden md:flex items-center gap-2 text-sm font-medium text-paper bg-ink rounded-full px-4 py-2 hover:bg-iris transition-colors duration-300"
           >
             {t('cta')}
           </a>

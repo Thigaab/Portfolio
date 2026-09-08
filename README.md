@@ -1,7 +1,8 @@
 # Portfolio — Thibaut Bonefont
 
-Personal portfolio site — a premium, interactive showcase with a dark/gold
-**finance** aesthetic, 3D WebGL scenes and scroll-driven animation.
+Personal portfolio site — a warm, light **editorial** showcase: printed-paper
+ground, ink typography, iris + coral accents, soft-clay 3D scenes and
+scroll-driven animation.
 
 🔗 [github.com/Thigaab](https://github.com/Thigaab) · [LinkedIn](https://www.linkedin.com/in/thibaut-bonefont-aa7822268/)
 
@@ -16,9 +17,10 @@ Personal portfolio site — a premium, interactive showcase with a dark/gold
 
 ## Highlights
 
-- Animated 3D **candlestick chart** hero with a cursor-reactive point grid
-- Gold coin-stack 3D element, magnetic buttons and 3D tilt cards
-- Global animated background (dotted grid + drifting gold aurora)
+- Soft-clay 3D still-life hero over a cursor-reactive halftone point grid
+- Kneading clay blob in the About section, magnetic buttons and 3D tilt cards
+- Global animated background (ink dot grid, risograph washes, paper grain)
+- Bilingual FR/EN (next-intl), French by default
 - Smooth scrolling with scroll-triggered section reveals
 
 ## Getting started

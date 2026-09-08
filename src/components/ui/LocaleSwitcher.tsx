@@ -13,15 +13,15 @@ export default function LocaleSwitcher() {
     <div className="flex items-center gap-1 text-xs font-mono">
       {routing.locales.map((l, i) => (
         <span key={l} className="flex items-center gap-1">
-          {i > 0 && <span className="text-dark-4">/</span>}
+          {i > 0 && <span className="text-ink-3/50">/</span>}
           <Link
             href={pathname}
             locale={l}
             aria-current={l === locale ? 'true' : undefined}
             className={
               l === locale
-                ? 'text-gold'
-                : 'text-muted hover:text-warm-white transition-colors duration-200'
+                ? 'text-iris'
+                : 'text-ink-3 hover:text-ink transition-colors duration-200'
             }
           >
             {l.toUpperCase()}
