@@ -72,6 +72,8 @@ reintroduce candlesticks or any market/chart imagery.
 - **Never use R3F `state.pointer` in `HeroScene`** — the hero's `z-[1]` gradient overlays cover the canvas with pointer-events, so it stays frozen at its initial value. `usePointerNDC()` tracks the cursor from a `window` `mousemove` and derives NDC from the canvas rect; `Scene` calls it once and passes the refs down to `ClayStill` / `HalftoneFloor` / `CameraRig`. `HalftoneFloor`'s grid is a *tilted* plane, so its cursor is mapped via a **raycaster onto the plane + `worldToLocal`** (NOT `ndc.x/y` directly). Points are then shoved radially away (+ `z` dip) from that local point.
 - **Overflow**: `html,body { overflow-x: clip }` + `Section` has `overflow-hidden`; cap decorative glows at `max-w-[90vw]`.
 - Motion should stay **slow/calm** — the user pushed back on fast, high-amplitude animation.
+- **Keep `src/app/favicon.ico` even though `src/app/icon.svg` exists.** Browsers request `/favicon.ico` unconditionally, whatever `<link rel="icon">` says, so deleting it 404s on every page load. Next emits a link for both. Regenerate it from `icon.svg` rather than hand-editing:
+  `rsvg-convert -w N -h N src/app/icon.svg -o N.png` for N in 16/32/48, then `magick 16.png 32.png 48.png -colors 256 src/app/favicon.ico`.
 - **Next 16 renamed `middleware.ts` → `proxy.ts`** (root/`src`, default-exports a `proxy` fn). next-intl's `createMiddleware` goes there. Don't create a `middleware.ts`.
 
 ## Conventions
