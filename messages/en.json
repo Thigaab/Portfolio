@@ -54,6 +54,16 @@
     "details": "View details",
     "close": "Close",
     "items": {
+      "meet-to-the-pit": {
+        "description": "Social mobile app built around live music: discover events, meet people with matching taste and sort out the logistics together.",
+        "long": "A social platform built around music events. It lets people discover concerts, meet others with similar taste and organise the logistics together, transport as well as accommodation. The backend is a Spring Boot REST API on Java 17, secured with Firebase tokens and backed by PostgreSQL, with Flyway migrations, full-text search and real-time chat over STOMP WebSockets. The mobile app is built with React Native and Expo, using React Query, Zustand and maps. A team project built over several months.",
+        "period": "Feb to Sep 2026"
+      },
+      "ecoticket": {
+        "description": "Snap a grocery receipt: a vision model extracts the items, estimates their carbon footprint and scores how sober the basket is.",
+        "long": "An app that turns a photo of a grocery receipt into an environmental read-out. A vision model, Gemini, extracts the purchased items, categorises them, estimates their carbon footprint and packaging impact, then computes a sobriety score for the whole basket. A history view tracks progress over time, and every analysis comes with concrete recommendations. Coefficients come from the open ADEME and Agribalyse databases rather than invented figures. FastAPI backend in Python with PostgreSQL, a React and Vite PWA front end, all deployed on Kubernetes. A team project targeting SDGs 12 and 13.",
+        "period": "Jul 2026"
+      },
       "tiger-compiler": {
         "description": "Full compiler for the educational Tiger language: lexical, syntactic and semantic analysis plus code generation.",
         "long": "A full compiler for Tiger, Andrew Appel's educational language, written in C++. It covers the whole pipeline: lexical (Flex) and syntactic (Bison) analysis, AST construction and traversal, semantic analysis (typing, scopes, bindings), then code generation through LLVM. One of the flagship projects of EPITA's systems track, built over several months.",

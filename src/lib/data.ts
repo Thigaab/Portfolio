@@ -41,6 +41,8 @@ export const SKILLS = [
 // `id` maps to messages `projects.items.<id>.{description,long,period}`. `cover`
 // overrides the default cover art at `public/projects/<id>.svg`.
 export const PROJECTS = [
+  { id: 'meet-to-the-pit', title: 'Meet To The Pit', tech: ['Java', 'Spring Boot', 'PostgreSQL', 'React Native', 'WebSocket', 'Docker'], type: 'Fullstack', github: null, website: null, cover: null },
+  { id: 'ecoticket', title: 'EcoTicket', tech: ['Python', 'FastAPI', 'Gemini', 'React', 'PostgreSQL', 'Kubernetes'], type: 'AI/ML', github: null, website: 'https://ecoticket.thibaut-bonefont.com', cover: null },
   { id: 'tiger-compiler', title: 'Tiger Compiler', tech: ['C++', 'LLVM', 'Flex', 'Bison'], type: 'Systems', github: null, website: null, cover: null },
   { id: 'jws-epibazaar', title: 'JWS Epibazaar', tech: ['Java', 'Hibernate', 'Kafka', 'PostgreSQL', 'Docker'], type: 'Backend', github: null, website: null, cover: null },
   { id: '42sh', title: '42SH · Shell POSIX', tech: ['C', 'POSIX', 'AST'], type: 'Systems', github: null, website: null, cover: null },

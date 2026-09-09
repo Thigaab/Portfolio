@@ -9,6 +9,7 @@ import { PROJECTS, type Project } from '@/lib/data'
 import ProjectModal from '@/components/sections/ProjectModal'
 
 const TYPE_COLORS: Record<string, string> = {
+  Fullstack: 'bg-ink/5 text-ink border-ink/20',
   Systems: 'bg-plum/5 text-plum border-plum/25',
   Backend: 'bg-moss/5 text-moss border-moss/25',
   Frontend: 'bg-iris/5 text-iris border-iris/25',

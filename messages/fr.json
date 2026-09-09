@@ -54,6 +54,16 @@
     "details": "Voir le détail",
     "close": "Fermer",
     "items": {
+      "meet-to-the-pit": {
+        "description": "Application mobile sociale autour des concerts : découvrir des événements, rencontrer des gens aux mêmes goûts et organiser la logistique ensemble.",
+        "long": "Une plateforme sociale pensée pour les événements musicaux. Elle permet de découvrir des concerts, de rencontrer des personnes aux goûts proches et d'organiser ensemble la logistique, transport comme hébergement. Le backend est une API REST Spring Boot en Java 17, sécurisée par jetons Firebase, adossée à PostgreSQL avec migrations Flyway, recherche plein texte et messagerie temps réel en WebSocket STOMP. L'application mobile est développée en React Native et Expo, avec React Query, Zustand et cartographie. Projet mené en équipe sur plusieurs mois.",
+        "period": "Fév à sept. 2026"
+      },
+      "ecoticket": {
+        "description": "Photographiez un ticket de caisse : un modèle de vision en extrait les articles, estime leur empreinte carbone et note la sobriété du panier.",
+        "long": "Une application qui transforme la photo d'un ticket de caisse en bilan environnemental. Un modèle de vision, Gemini, extrait les articles achetés, les catégorise, estime leur empreinte carbone et l'impact de leur emballage, puis calcule un score de sobriété pour l'ensemble du panier. L'historique permet de suivre sa progression dans le temps et chaque analyse s'accompagne de recommandations concrètes. Les coefficients proviennent des bases ouvertes ADEME et Agribalyse plutôt que de chiffres inventés. Backend FastAPI en Python avec PostgreSQL, interface React et Vite en PWA, le tout déployé sur Kubernetes. Projet d'équipe visant les ODD 12 et 13.",
+        "period": "Juil. 2026"
+      },
       "tiger-compiler": {
         "description": "Compilateur complet pour le langage éducatif Tiger : analyse lexicale, syntaxique, sémantique et génération de code.",
         "long": "Un compilateur complet pour Tiger, le langage éducatif d'Andrew Appel, écrit en C++. Il couvre toute la chaîne : analyse lexicale (Flex) et syntaxique (Bison), construction et parcours de l'AST, analyse sémantique (typage, portées, liaisons), puis génération de code via LLVM. L'un des projets majeurs du cursus systèmes de l'EPITA, mené sur plusieurs mois.",
