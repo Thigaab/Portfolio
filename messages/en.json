@@ -61,7 +61,8 @@
       },
       "ecoticket": {
         "description": "Snap a grocery receipt: a vision model extracts the items, estimates their carbon footprint and scores how sober the basket is.",
-        "long": "An app that turns a photo of a grocery receipt into an environmental read-out. A vision model, Gemini, extracts the purchased items, categorises them, estimates their carbon footprint and packaging impact, then computes a sobriety score for the whole basket. A history view tracks progress over time, and every analysis comes with concrete recommendations. Coefficients come from the open ADEME and Agribalyse databases rather than invented figures. FastAPI backend in Python with PostgreSQL, a React and Vite PWA front end, all deployed on Kubernetes. A team project targeting SDGs 12 and 13.",
+        "award": "Winner of the Takima hackathon",
+        "long": "An app that turns a photo of a grocery receipt into an environmental read-out. A vision model, Gemini, extracts the purchased items, categorises them, estimates their carbon footprint and packaging impact, then computes a sobriety score for the whole basket. A history view tracks progress over time, and every analysis comes with concrete recommendations. Coefficients come from the open ADEME and Agribalyse databases rather than invented figures. FastAPI backend in Python with PostgreSQL, a React and Vite PWA front end, all deployed on Kubernetes. Built by a team during a hackathon run by the company Takima, where it took first place. It targets SDGs 12 and 13.",
         "period": "Jul 2026"
       },
       "tiger-compiler": {

@@ -41,14 +41,14 @@ export const SKILLS = [
 // `id` maps to messages `projects.items.<id>.{description,long,period}`. `cover`
 // overrides the default cover art at `public/projects/<id>.svg`.
 export const PROJECTS = [
-  { id: 'meet-to-the-pit', title: 'Meet To The Pit', tech: ['Java', 'Spring Boot', 'PostgreSQL', 'React Native', 'WebSocket', 'Docker'], type: 'Fullstack', github: null, website: null, cover: null },
-  { id: 'ecoticket', title: 'EcoTicket', tech: ['Python', 'FastAPI', 'Gemini', 'React', 'PostgreSQL', 'Kubernetes'], type: 'AI/ML', github: null, website: 'https://ecoticket.thibaut-bonefont.com', cover: null },
-  { id: 'tiger-compiler', title: 'Tiger Compiler', tech: ['C++', 'LLVM', 'Flex', 'Bison'], type: 'Systems', github: null, website: null, cover: null },
-  { id: 'jws-epibazaar', title: 'JWS Epibazaar', tech: ['Java', 'Hibernate', 'Kafka', 'PostgreSQL', 'Docker'], type: 'Backend', github: null, website: null, cover: null },
-  { id: '42sh', title: '42SH · Shell POSIX', tech: ['C', 'POSIX', 'AST'], type: 'Systems', github: null, website: null, cover: null },
-  { id: 'ocr-sudoku', title: 'OCR Sudoku Solver', tech: ['C', 'Neural Network', 'OCR'], type: 'AI/ML', github: 'https://github.com/touikss/SudokuSolver', website: null, cover: '/projects/ocr-sudoku.png' },
-  { id: 'prospectmap', title: 'ProspectMap', tech: ['Python', 'Scraping', 'Docker'], type: 'Tools', github: 'https://github.com/Thigaab/ProspectMap', website: null, cover: null },
-  { id: 'dunes-demis', title: 'Dunes & Demis', tech: ['Next.js', 'React', 'TypeScript', 'Tailwind'], type: 'Frontend', github: 'https://github.com/Thigaab/Dunes-Demis', website: 'https://dunes-demis.vercel.app', cover: '/projects/dunes-demis.png' },
+  { id: 'meet-to-the-pit', title: 'Meet To The Pit', tech: ['Java', 'Spring Boot', 'PostgreSQL', 'React Native', 'WebSocket', 'Docker'], type: 'Fullstack', github: null, website: null, cover: null, award: false },
+  { id: 'ecoticket', title: 'EcoTicket', tech: ['Python', 'FastAPI', 'Gemini', 'React', 'PostgreSQL', 'Kubernetes'], type: 'AI/ML', github: null, website: 'https://ecoticket.thibaut-bonefont.com', cover: null, award: true },
+  { id: 'tiger-compiler', title: 'Tiger Compiler', tech: ['C++', 'LLVM', 'Flex', 'Bison'], type: 'Systems', github: null, website: null, cover: null, award: false },
+  { id: 'jws-epibazaar', title: 'JWS Epibazaar', tech: ['Java', 'Hibernate', 'Kafka', 'PostgreSQL', 'Docker'], type: 'Backend', github: null, website: null, cover: null, award: false },
+  { id: '42sh', title: '42SH · Shell POSIX', tech: ['C', 'POSIX', 'AST'], type: 'Systems', github: null, website: null, cover: null, award: false },
+  { id: 'ocr-sudoku', title: 'OCR Sudoku Solver', tech: ['C', 'Neural Network', 'OCR'], type: 'AI/ML', github: 'https://github.com/touikss/SudokuSolver', website: null, cover: '/projects/ocr-sudoku.png', award: false },
+  { id: 'prospectmap', title: 'ProspectMap', tech: ['Python', 'Scraping', 'Docker'], type: 'Tools', github: 'https://github.com/Thigaab/ProspectMap', website: null, cover: null, award: false },
+  { id: 'dunes-demis', title: 'Dunes & Demis', tech: ['Next.js', 'React', 'TypeScript', 'Tailwind'], type: 'Frontend', github: 'https://github.com/Thigaab/Dunes-Demis', website: 'https://dunes-demis.vercel.app', cover: '/projects/dunes-demis.png', award: false },
 ]
 
 export type Project = (typeof PROJECTS)[number]

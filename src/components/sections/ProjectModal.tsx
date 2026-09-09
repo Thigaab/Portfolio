@@ -5,6 +5,7 @@ import { createPortal } from 'react-dom'
 import { useTranslations } from 'next-intl'
 import { getLenis } from '@/components/providers/SmoothScroll'
 import type { Project } from '@/lib/data'
+import AwardBadge from '@/components/ui/AwardBadge'
 
 const ARROW = (
   <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
@@ -45,7 +46,7 @@ export default function ProjectModal({
 
   if (!mounted || !project) return null
 
-  const { id, title, tech, type, github, website, cover } = project
+  const { id, title, tech, type, github, website, cover, award } = project
 
   return createPortal(
     <div
@@ -80,11 +81,12 @@ export default function ProjectModal({
         />
 
         <div className="p-6 sm:p-8">
-          <div className="mb-3 flex items-center gap-3">
+          <div className="mb-3 flex flex-wrap items-center gap-2">
             <span className="rounded-md border border-iris/25 bg-iris/5 px-2.5 py-1 text-[10px] font-mono font-semibold uppercase tracking-widest text-iris">
               {type}
             </span>
             <span className="font-mono text-xs text-ink-3">{t(`items.${id}.period`)}</span>
+            {award && <AwardBadge label={t(`items.${id}.award`)} />}
           </div>
 
           <h3 className="mb-4 font-display text-3xl leading-tight text-ink md:text-4xl">{title}</h3>

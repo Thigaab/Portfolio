@@ -7,6 +7,7 @@ import TiltCard from '@/components/ui/TiltCard'
 import { Section, Container } from '@/components/layout/Section'
 import { PROJECTS, type Project } from '@/lib/data'
 import ProjectModal from '@/components/sections/ProjectModal'
+import AwardBadge from '@/components/ui/AwardBadge'
 
 const TYPE_COLORS: Record<string, string> = {
   Fullstack: 'bg-ink/5 text-ink border-ink/20',
@@ -68,6 +69,12 @@ export default function Projects() {
                   <h3 className="font-display text-2xl text-ink mb-3 leading-tight group-hover:text-iris transition-colors duration-300">
                     {project.title}
                   </h3>
+
+                  {project.award && (
+                    <div className="-mt-1 mb-3">
+                      <AwardBadge label={t(`items.${project.id}.award`)} />
+                    </div>
+                  )}
 
                   <p className="text-sm text-ink-2 leading-relaxed mb-5 flex-1">
                     {t(`items.${project.id}.description`)}
