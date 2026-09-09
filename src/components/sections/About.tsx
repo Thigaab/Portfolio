@@ -13,7 +13,7 @@ import TiltCard from '@/components/ui/TiltCard'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-const AboutOrb = dynamic(() => import('@/components/canvas/AboutOrb'), { ssr: false })
+const LatticeCube = dynamic(() => import('@/components/canvas/LatticeCube'), { ssr: false })
 
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null)
@@ -103,7 +103,7 @@ export default function About() {
     <Section id="about">
       <Container ref={sectionRef}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left — text + 3D blob */}
+          {/* Left — text + 3D lattice */}
           <div>
             <p data-reveal className="text-xs font-mono tracking-[0.28em] text-ink-3 uppercase mb-4">
               {t('eyebrow')}
@@ -122,9 +122,9 @@ export default function About() {
               {t('paragraph2')}
             </p>
 
-            {/* 3D blob */}
+            {/* 3D lattice cube */}
             <div data-reveal className="h-56 w-full -ml-4" data-cursor-hover>
-              <AboutOrb />
+              <LatticeCube />
             </div>
           </div>
 
