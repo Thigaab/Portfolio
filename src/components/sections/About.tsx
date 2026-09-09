@@ -135,7 +135,7 @@ export default function About() {
                 <div key={stat.key} data-reveal>
                   <TiltCard
                     max={6}
-                    className="text-center border border-line rounded-2xl p-5 bg-surface shadow-[0_1px_2px_rgba(23,22,29,0.04)]"
+                    className="h-full text-center border border-line rounded-2xl p-5 bg-surface shadow-[0_1px_2px_rgba(23,22,29,0.04)]"
                   >
                     <div className="relative z-20">
                       <div className="font-display text-4xl md:text-5xl text-iris mb-1">
