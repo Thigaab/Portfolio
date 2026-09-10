@@ -43,3 +43,6 @@ next-env.d.ts
 # claude code local state
 .claude/settings.local.json
 .claude/*.tmp.*
+
+# build de verification hors du .next du serveur de dev
+/.next-*/
