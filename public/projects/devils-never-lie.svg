@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <defs>
+    <pattern id="d" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#17161d" fill-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="#efe9dc"/>
+  <rect width="800" height="450" fill="url(#d)"/>
+  <rect x="26" y="26" width="748" height="398" rx="14" fill="none" stroke="#17161d" stroke-opacity=".14"/>
+  <text x="238" y="92" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="start">BOSS · PHASE 2 / 3</text>
+  <rect x="238" y="104" width="104" height="16" rx="8" fill="#a8442f" fill-opacity=".6" stroke="#a8442f" stroke-opacity=".45" stroke-width="1.5"/>
+  <rect x="350" y="104" width="104" height="16" rx="8" fill="#a8442f" fill-opacity=".6" stroke="#a8442f" stroke-opacity=".45" stroke-width="1.5"/>
+  <rect x="462" y="104" width="104" height="16" rx="8" fill="#a8442f" fill-opacity=".12" stroke="#a8442f" stroke-opacity=".45" stroke-width="1.5"/>
+  <g transform="rotate(-11 268 268)">
+    <rect x="202" y="175" width="132" height="186" rx="14" fill="#fbf9f5" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+    <rect x="218" y="193" width="100" height="52" rx="8" fill="#a8442f" fill-opacity=".22"/>
+    <rect x="218" y="259" width="80" height="8" rx="4" fill="#17161d" fill-opacity=".2"/>
+    <rect x="218" y="279" width="70" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.45"/>
+    <rect x="218" y="299" width="52" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.35"/>
+    <rect x="218" y="319" width="84" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.25"/>
+  </g>
+  <g transform="rotate(0 400 254)">
+    <rect x="334" y="161" width="132" height="186" rx="14" fill="#fbf9f5" stroke="#a8442f" stroke-opacity=".8" stroke-width="2.5"/>
+    <rect x="350" y="179" width="100" height="52" rx="8" fill="#a8442f" fill-opacity=".5"/>
+    <rect x="350" y="245" width="80" height="8" rx="4" fill="#17161d" fill-opacity=".2"/>
+    <rect x="350" y="265" width="70" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.45"/>
+    <rect x="350" y="285" width="52" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.35"/>
+    <rect x="350" y="305" width="84" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.25"/>
+    <circle cx="448" cy="327" r="13" fill="#a8442f" fill-opacity=".85"/>
+    <path d="M448 320v14M441 327h14" stroke="#fbf9f5" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(11 532 268)">
+    <rect x="466" y="175" width="132" height="186" rx="14" fill="#fbf9f5" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+    <rect x="482" y="193" width="100" height="52" rx="8" fill="#a8442f" fill-opacity=".22"/>
+    <rect x="482" y="259" width="80" height="8" rx="4" fill="#17161d" fill-opacity=".2"/>
+    <rect x="482" y="279" width="70" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.45"/>
+    <rect x="482" y="299" width="52" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.35"/>
+    <rect x="482" y="319" width="84" height="7" rx="3.5" fill="#a8442f" fill-opacity="0.25"/>
+  </g>
+  <text x="400" y="384" font-family="ui-monospace,monospace" font-size="14" letter-spacing="3" fill="#46434f" text-anchor="middle">DRAW  ·  UPGRADE  ·  RUN</text>
+  <text x="78" y="404" font-family="ui-monospace,monospace" font-size="15" letter-spacing="3" fill="#7c7787">UNITY 6 · C# · UNIRX</text>
+</svg>

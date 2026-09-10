@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <defs>
+    <pattern id="d" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#17161d" fill-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="#efe9dc"/>
+  <rect width="800" height="450" fill="url(#d)"/>
+  <rect x="26" y="26" width="748" height="398" rx="14" fill="none" stroke="#17161d" stroke-opacity=".14"/>
+  <text x="78" y="108" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="start">PIECES</text>
+  <rect x="78.5" y="124.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="107" y="124" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="136" y="124" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="165" y="124" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="194" y="124" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="223" y="124" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="252" y="124" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="281" y="124" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="310.5" y="124.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="78" y="153" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="107.5" y="153.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="136.5" y="153.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="165.5" y="153.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="194" y="153" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="223" y="153" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".22"/>
+  <rect x="252" y="153" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="281.5" y="153.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="310.5" y="153.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="78" y="182" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="107.5" y="182.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="136" y="182" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="165.5" y="182.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="194.5" y="182.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="223" y="182" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="252.5" y="182.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="281" y="182" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="310" y="182" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="78" y="211" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="107" y="211" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="136.5" y="211.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="165" y="211" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="194" y="211" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="223" y="211" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="252.5" y="211.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="281" y="211" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="310.5" y="211.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="78.5" y="240.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="107" y="240" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="136" y="240" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="165" y="240" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="194" y="240" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".22"/>
+  <rect x="223" y="240" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="252.5" y="240.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="281" y="240" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="310" y="240" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="78.5" y="269.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="107.5" y="269.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="136.5" y="269.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="165" y="269" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="194" y="269" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <rect x="223.5" y="269.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="252.5" y="269.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="281.5" y="269.5" width="24" height="24" rx="4" fill="none" stroke="#17161d" stroke-opacity=".16"/>
+  <rect x="310" y="269" width="25" height="25" rx="4" fill="#8a3ea6" fill-opacity=".55"/>
+  <text x="78" y="322" font-family="ui-monospace,monospace" font-size="14" letter-spacing="2" fill="#46434f" text-anchor="start">30 / 54 · SHA-1 OK</text>
+  <text x="566" y="108" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="middle">SWARM</text>
+  <line x1="566" y1="240" x2="424" y2="196" stroke="#8a3ea6" stroke-opacity=".38" stroke-width="1.6" stroke-dasharray="5 6"/>
+  <line x1="566" y1="240" x2="450" y2="306" stroke="#8a3ea6" stroke-opacity=".38" stroke-width="1.6" stroke-dasharray="5 6"/>
+  <line x1="566" y1="240" x2="520" y2="144" stroke="#8a3ea6" stroke-opacity=".38" stroke-width="1.6" stroke-dasharray="5 6"/>
+  <line x1="566" y1="240" x2="698" y2="190" stroke="#8a3ea6" stroke-opacity=".38" stroke-width="1.6" stroke-dasharray="5 6"/>
+  <line x1="566" y1="240" x2="670" y2="314" stroke="#8a3ea6" stroke-opacity=".38" stroke-width="1.6" stroke-dasharray="5 6"/>
+  <line x1="566" y1="240" x2="580" y2="350" stroke="#8a3ea6" stroke-opacity=".38" stroke-width="1.6" stroke-dasharray="5 6"/>
+  <circle cx="424" cy="196" r="13" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="2"/>
+  <circle cx="424" cy="196" r="5" fill="#8a3ea6" fill-opacity="0.5"/>
+  <circle cx="450" cy="306" r="13" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="2"/>
+  <circle cx="450" cy="306" r="5" fill="#8a3ea6" fill-opacity="0.38"/>
+  <circle cx="520" cy="144" r="13" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="2"/>
+  <circle cx="520" cy="144" r="5" fill="#8a3ea6" fill-opacity="0.62"/>
+  <circle cx="698" cy="190" r="13" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="2"/>
+  <circle cx="698" cy="190" r="5" fill="#8a3ea6" fill-opacity="0.45"/>
+  <circle cx="670" cy="314" r="13" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="2"/>
+  <circle cx="670" cy="314" r="5" fill="#8a3ea6" fill-opacity="0.3"/>
+  <circle cx="580" cy="350" r="13" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="2"/>
+  <circle cx="580" cy="350" r="5" fill="#8a3ea6" fill-opacity="0.5"/>
+  <rect x="520" y="214" width="92" height="52" rx="12" fill="#fbf9f5" stroke="#17161d" stroke-opacity=".28" stroke-width="2"/>
+  <text x="566" y="245" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="middle">self</text>
+  <text x="566" y="388" font-family="ui-monospace,monospace" font-size="14" letter-spacing="1" fill="#46434f" text-anchor="middle">↓ 4.2 MB/s   ↑ 1.1</text>
+  <text x="78" y="404" font-family="ui-monospace,monospace" font-size="15" letter-spacing="3" fill="#7c7787">C99 · EPOLL · MESON</text>
+</svg>

@@ -1,15 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
   <defs>
-    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+    <pattern id="d" width="26" height="26" patternUnits="userSpaceOnUse">
       <circle cx="1.5" cy="1.5" r="1.5" fill="#17161d" fill-opacity=".07"/>
     </pattern>
   </defs>
   <rect width="800" height="450" fill="#efe9dc"/>
-  <rect width="800" height="450" fill="url(#dots)"/>
-  <rect x="26" y="26" width="748" height="398" rx="14" fill="none" stroke="#17161d" stroke-opacity=".14"/>
-  <text x="400" y="196" text-anchor="middle"
-        font-family="'Instrument Serif', Georgia, 'Times New Roman', serif" font-size="62" fill="#17161d">EcoTicket</text>
-  <rect x="356" y="232" width="88" height="4" rx="2" fill="#ff6a45"/>
-  <text x="400" y="286" text-anchor="middle" font-family="ui-monospace, monospace"
-        font-size="16" letter-spacing="3" fill="#7c7787">FASTAPI · GEMINI · REACT</text>
+  <rect width="800" height="450" fill="url(#d)"/>
+  <rect x="70" y="26" width="660" height="398" rx="14" fill="none" stroke="#17161d" stroke-opacity=".14"/>
+  <path d="M150 116h168v196l-21 12l-21-12l-21 12l-21-12l-21 12l-21-12l-21 12l-21-12z" fill="#fbf9f5" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <text x="166" y="150" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="start">TICKET</text>
+  <line x1="166" y1="162" x2="302" y2="162" stroke="#17161d" stroke-opacity=".18" stroke-width="1.5"/>
+  <rect x="166" y="184" width="104" height="7" rx="3.5" fill="#17161d" fill-opacity=".16"/>
+  <rect x="266" y="184" width="36" height="7" rx="3.5" fill="#ff6a45" fill-opacity="0.55"/>
+  <rect x="166" y="208" width="82" height="7" rx="3.5" fill="#17161d" fill-opacity=".16"/>
+  <rect x="266" y="208" width="36" height="7" rx="3.5" fill="#ff6a45" fill-opacity="0.47"/>
+  <rect x="166" y="232" width="118" height="7" rx="3.5" fill="#17161d" fill-opacity=".16"/>
+  <rect x="266" y="232" width="36" height="7" rx="3.5" fill="#ff6a45" fill-opacity="0.39"/>
+  <rect x="166" y="256" width="68" height="7" rx="3.5" fill="#17161d" fill-opacity=".16"/>
+  <rect x="266" y="256" width="36" height="7" rx="3.5" fill="#ff6a45" fill-opacity="0.31"/>
+  <rect x="166" y="280" width="96" height="7" rx="3.5" fill="#17161d" fill-opacity=".16"/>
+  <rect x="266" y="280" width="36" height="7" rx="3.5" fill="#ff6a45" fill-opacity="0.23"/>
+  <path d="M136 128v-26h26" stroke="#ff6a45" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M332 128v-26h-26" stroke="#ff6a45" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M136 312v26h26" stroke="#ff6a45" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M332 312v26h-26" stroke="#ff6a45" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M348 214h44" stroke="#17161d" stroke-opacity=".3" stroke-width="2" stroke-dasharray="6 6"/>
+  <path d="M386 207l9 7l-9 7" stroke="#17161d" stroke-opacity=".45" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="370" y="192" font-family="ui-monospace,monospace" font-size="12" letter-spacing="2" fill="#7c7787" text-anchor="middle">VISION</text>
+  <rect x="416" y="116" width="248" height="208" rx="14" fill="#fbf9f5" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <circle cx="482" cy="198" r="42" fill="none" stroke="#17161d" stroke-opacity=".12" stroke-width="11"/>
+  <circle cx="482" cy="198" r="42" fill="none" stroke="#ff6a45" stroke-width="11" stroke-linecap="round" stroke-dasharray="190.0 263.9" transform="rotate(-90 482 198)"/>
+  <text x="482" y="206" font-family="ui-monospace,monospace" font-size="24" letter-spacing="0" fill="#46434f" text-anchor="middle">72</text>
+  <text x="542" y="172" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="start">SOBRIÉTÉ</text>
+  <rect x="542" y="192" width="92" height="9" rx="4.5" fill="#ff6a45" fill-opacity="0.6"/>
+  <rect x="542" y="214" width="68" height="9" rx="4.5" fill="#ff6a45" fill-opacity="0.42"/>
+  <rect x="542" y="236" width="44" height="9" rx="4.5" fill="#ff6a45" fill-opacity="0.26"/>
+  <line x1="438" y1="266" x2="642" y2="266" stroke="#17161d" stroke-opacity=".14" stroke-width="1.5"/>
+  <text x="438" y="296" font-family="ui-monospace,monospace" font-size="18" letter-spacing="1" fill="#46434f" text-anchor="start">4.8 kg CO2e</text>
+  <text x="642" y="296" font-family="ui-monospace,monospace" font-size="12" letter-spacing="2" fill="#7c7787" text-anchor="end">ADEME</text>
+  <text x="104" y="404" font-family="ui-monospace,monospace" font-size="15" letter-spacing="3" fill="#7c7787">FASTAPI · GEMINI · REACT</text>
 </svg>

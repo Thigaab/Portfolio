@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <defs>
+    <pattern id="d" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#17161d" fill-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="#efe9dc"/>
+  <rect width="800" height="450" fill="url(#d)"/>
+  <rect x="26" y="26" width="748" height="398" rx="14" fill="none" stroke="#17161d" stroke-opacity=".14"/>
+  <text x="78" y="112" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="start">ARENA</text>
+  <text x="722" y="112" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="end">BRK →</text>
+  <rect x="78" y="132" width="644" height="92" rx="10" fill="#fbf9f5" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <rect x="86" y="148" width="80" height="60" rx="6" fill="#8a3ea6" fill-opacity=".45"/>
+  <text x="126" y="183" font-family="ui-monospace,monospace" font-size="14" letter-spacing="1" fill="#46434f" text-anchor="middle">32</text>
+  <rect x="81" y="148" width="4" height="60" rx="2" fill="#17161d" fill-opacity=".3"/>
+  <line x1="174" y1="132" x2="174" y2="224" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <rect x="177" y="148" width="4" height="60" rx="2" fill="#17161d" fill-opacity=".3"/>
+  <rect x="250" y="148" width="116" height="60" rx="6" fill="#8a3ea6" fill-opacity=".45"/>
+  <text x="308" y="183" font-family="ui-monospace,monospace" font-size="14" letter-spacing="1" fill="#46434f" text-anchor="middle">128</text>
+  <line x1="242" y1="132" x2="242" y2="224" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <rect x="245" y="148" width="4" height="60" rx="2" fill="#17161d" fill-opacity=".3"/>
+  <line x1="374" y1="132" x2="374" y2="224" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <rect x="377" y="148" width="4" height="60" rx="2" fill="#17161d" fill-opacity=".3"/>
+  <rect x="466" y="148" width="92" height="60" rx="6" fill="#8a3ea6" fill-opacity=".45"/>
+  <text x="512" y="183" font-family="ui-monospace,monospace" font-size="14" letter-spacing="1" fill="#46434f" text-anchor="middle">64</text>
+  <line x1="458" y1="132" x2="458" y2="224" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <rect x="461" y="148" width="4" height="60" rx="2" fill="#17161d" fill-opacity=".3"/>
+  <rect x="574" y="148" width="140" height="60" rx="6" fill="#8a3ea6" fill-opacity=".2" stroke="#8a3ea6" stroke-opacity=".55" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="644" y="183" font-family="ui-monospace,monospace" font-size="14" letter-spacing="1" fill="#46434f" text-anchor="middle">1M</text>
+  <line x1="566" y1="132" x2="566" y2="224" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+  <rect x="569" y="148" width="4" height="60" rx="2" fill="#17161d" fill-opacity=".3"/>
+  <text x="78" y="266" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="start">FREE LIST</text>
+  <path d="M170 261h20" stroke="#8a3ea6" stroke-opacity=".55" stroke-width="2"/>
+  <path d="M208 230 C 208 282, 416 282, 416 230" stroke="#8a3ea6" stroke-opacity=".55" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+  <circle cx="208" cy="230" r="4" fill="#8a3ea6" fill-opacity=".7"/>
+  <circle cx="416" cy="230" r="4" fill="#8a3ea6" fill-opacity=".7"/>
+  <path d="M424 261 C 470 261, 470 261, 496 261" stroke="#8a3ea6" stroke-opacity=".45" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+  <text x="516" y="266" font-family="ui-monospace,monospace" font-size="16" letter-spacing="1" fill="#7c7787" text-anchor="start">∅</text>
+  <text x="78" y="340" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="start">BINS</text>
+  <rect x="78" y="352" width="96" height="26" rx="6" fill="#8a3ea6" fill-opacity="0.5"/>
+  <text x="126" y="371" font-family="ui-monospace,monospace" font-size="13" letter-spacing="1" fill="#46434f" text-anchor="middle">16</text>
+  <rect x="182" y="352" width="96" height="26" rx="6" fill="#8a3ea6" fill-opacity="0.34"/>
+  <text x="230" y="371" font-family="ui-monospace,monospace" font-size="13" letter-spacing="1" fill="#46434f" text-anchor="middle">32</text>
+  <rect x="286" y="352" width="96" height="26" rx="6" fill="#8a3ea6" fill-opacity="0.22"/>
+  <text x="334" y="371" font-family="ui-monospace,monospace" font-size="13" letter-spacing="1" fill="#46434f" text-anchor="middle">64</text>
+  <rect x="390" y="352" width="96" height="26" rx="6" fill="#8a3ea6" fill-opacity="0.14"/>
+  <text x="438" y="371" font-family="ui-monospace,monospace" font-size="13" letter-spacing="1" fill="#46434f" text-anchor="middle">128</text>
+  <rect x="494" y="352" width="96" height="26" rx="6" fill="#8a3ea6" fill-opacity="0.08"/>
+  <text x="542" y="371" font-family="ui-monospace,monospace" font-size="13" letter-spacing="1" fill="#46434f" text-anchor="middle">256</text>
+  <text x="78" y="404" font-family="ui-monospace,monospace" font-size="15" letter-spacing="3" fill="#7c7787">C99 · MMAP · PTHREADS</text>
+</svg>

@@ -8,38 +8,38 @@
   },
   "hero": {
     "eyebrow": "Fullstack · DevOps · Systèmes",
-    "bio": "Étudiant ingénieur en dernière année à l'EPITA Paris. Je conçois des systèmes robustes, du compilateur à l'interface, et je les déploie moi-même.",
-    "ctaProjects": "Découvrir mes projets",
+    "bio": "Ingénieur logiciel formé à l'EPITA, Toulouse puis Paris. Du bas niveau sur des systèmes temps réel aux applications web modernes, et le déploiement qui va avec.",
+    "ctaProjects": "Voir mes projets",
     "scroll": "Scroll"
   },
   "about": {
     "eyebrow": "01 / À propos",
     "heading": "À propos",
-    "bio": "Étudiant ingénieur en dernière année à l'EPITA Paris. Je conçois des systèmes robustes, du compilateur à l'interface, et je les déploie moi-même.",
-    "paragraph2": "Ce qui m'attire, c'est la complexité des systèmes : un pipeline de données, une architecture microservices, un compilateur. Je cherche des projets où la rigueur technique produit un impact réel.",
+    "bio": "Formé à l'EPITA, Toulouse puis Paris, en spécialisation Multimédia et Technologie de l'Information, avec une option en finance quantitative. J'ai commencé par le bas niveau, le C, les shells, la gestion mémoire, avant de remonter vers le web puis vers l'infrastructure : les deux bouts m'intéressent toujours autant.",
+    "paragraph2": "Concrètement : un client BitTorrent et un shell POSIX en C, une application mobile de concerts développée en équipe sur plusieurs mois, et un cluster k3s sur un VPS qui héberge ce site, TLS et supervision compris. Ce que j'écris, je le déploie et je le maintiens ensuite. Je cherche aujourd'hui un stage de fin d'études pour mettre tout ça en pratique dans une nouvelle équipe.",
     "features": {
       "epita": {
-        "label": "EPITA Paris",
-        "desc": "Cycle ingénieur, promo 2027"
+        "label": "EPITA",
+        "desc": "Toulouse puis Paris, promo 2027"
       },
       "fullstack": {
         "label": "Fullstack & DevOps",
-        "desc": "Du code au déploiement"
+        "desc": "Spring et React, Docker et k8s"
       },
       "systems": {
         "label": "Systèmes & bas niveau",
-        "desc": "Compilateurs, shells, C/C++"
+        "desc": "C/C++, shells, allocateurs"
       },
       "selfhosted": {
-        "label": "Self-hosted",
-        "desc": "Infra Docker personnelle"
+        "label": "Auto-hébergé",
+        "desc": "Ce site tourne sur mon cluster"
       }
     }
   },
   "stats": {
-    "languages": "Langages maîtrisés",
+    "experience": "Ans de développement",
     "projects": "Projets réalisés",
-    "experience": "Années d'expérience"
+    "languages": "Langages maîtrisés"
   },
   "skills": {
     "eyebrow": "02 / Stack technique",
@@ -48,11 +48,24 @@
   "projects": {
     "eyebrow": "03 / Réalisations",
     "heading": "Projets",
+    "groups": {
+      "product": "Produits & applications",
+      "systems": "Systèmes & infrastructure"
+    },
     "viewGithub": "Voir sur GitHub",
     "visitSite": "Voir le site",
     "privateCode": "Projet académique · code privé",
+    "personalCode": "Projet perso · code non disponible",
     "details": "Voir le détail",
     "close": "Fermer",
+    "more": "Autres projets",
+    "carouselLabel": "Autres projets, défilement horizontal",
+    "prev": "Projets précédents",
+    "next": "Projets suivants",
+    "goTo": "Aller au projet {name}",
+    "shots": "Captures",
+    "shotAlt": "Capture {n} de {name}",
+    "enlarge": "Agrandir la capture {n}",
     "items": {
       "meet-to-the-pit": {
         "description": "Application mobile sociale autour des concerts : découvrir des événements, rencontrer des gens aux mêmes goûts et organiser la logistique ensemble.",
@@ -69,6 +82,41 @@
         "description": "Compilateur complet pour le langage éducatif Tiger : analyse lexicale, syntaxique, sémantique et génération de code.",
         "long": "Un compilateur complet pour Tiger, le langage éducatif d'Andrew Appel, écrit en C++. Il couvre toute la chaîne : analyse lexicale (Flex) et syntaxique (Bison), construction et parcours de l'AST, analyse sémantique (typage, portées, liaisons), puis génération de code via LLVM. L'un des projets majeurs du cursus systèmes de l'EPITA, mené sur plusieurs mois.",
         "period": "Fév à mai 2026"
+      },
+      "infra": {
+        "description": "Le VPS qui héberge ce site : un cluster k3s mono-nœud, TLS automatique, supervision Prometheus/Grafana et alertes Discord.",
+        "long": "Un serveur personnel administré comme une petite plateforme. k3s fait tourner le cluster sur un seul nœud, Traefik sert d'ingress, cert-manager émet et renouvelle les certificats Let's Encrypt via le challenge HTTP-01, et kube-prometheus-stack (Prometheus, Grafana, Alertmanager) supervise l'ensemble. Les alertes partent dans un salon Discord : ses webhooks acceptent nativement le format Slack, donc le receveur slack_configs d'Alertmanager suffit, sans relais intermédiaire. Le dépôt sépare volontairement ce qui appartient au cluster, comme l'émission TLS et la supervision, des manifestes propres à chaque application, qui vivent dans le dépôt de l'application concernée. Ce portfolio a ainsi son propre dossier k8s avec son Deployment, son Service, son Ingress et ses règles d'alerte : le site que vous lisez est déployé par ce cluster.",
+        "period": "Depuis juil. 2026"
+      },
+      "homelab": {
+        "description": "Un serveur multimédia auto-hébergé sur TrueNAS SCALE : bibliothèque familiale, interface de demande façon Netflix et accès distant sans aucun port ouvert.",
+        "long": "Une pile Docker Compose complète, versionnée comme du code, qui tourne sur un NAS TrueNAS SCALE. Jellyfin sert la bibliothèque avec transcodage matériel Intel Quick Sync, Jellyseerr donne aux proches une interface de demande façon Netflix, et Sonarr, Radarr et Prowlarr enchaînent recherche, récupération et rangement automatique des fichiers pendant que Bazarr s'occupe des sous-titres. Le client de téléchargement partage la pile réseau d'un conteneur Gluetun, en network_mode service:gluetun : si le tunnel VPN tombe, le trafic est coupé net et aucune fuite n'est possible par construction. L'accès distant passe par un tunnel Cloudflare sortant doublé de Zero Trust Access : zéro port ouvert sur la box, aucune IP fixe à maintenir, et une authentification par code à usage unique devant chaque hôte public. Côté stockage, ZFS, avec médias et téléchargements sur le même pool pour que les imports se fassent par hardlink, donc instantanément et sans copie. Recyclarr synchronise enfin des profils de qualité issus des TRaSH Guides pour garder la taille de la bibliothèque raisonnable.",
+        "period": "Depuis 2026"
+      },
+      "devils-never-lie": {
+        "description": "Shooter top-down roguelike sous Unity : combats à l'arme, cartes d'amélioration tirées entre les affrontements et boss à plusieurs phases.",
+        "long": "Un jeu de tir en vue de dessus, à structure roguelike, développé en équipe sous Unity 6 et publié sur itch.io. Le cœur du jeu tient dans les cartes d'amélioration que l'on choisit entre les affrontements : chacune modifie les statistiques du personnage et de ses projectiles, ce qui fait diverger chaque partie. Les ennemis se déplacent par navigation NavMesh adaptée à la 2D, les boss enchaînent plusieurs phases avec un compteur de résurrections, et la progression d'une partie est sauvegardée. Côté technique, UniRx pour les flux d'événements et DOTween pour les animations. Environ 80 scripts C# écrits à huit.",
+        "period": "Fév 2026"
+      },
+      "bittorrent": {
+        "description": "Client BitTorrent en C, conforme au protocole officiel, qui tient plusieurs pairs simultanés sans un seul thread grâce à epoll.",
+        "long": "Un client BitTorrent écrit en C99, suivant la spécification officielle : BEP 0003 pour le protocole, BEP 0023 pour les requêtes au tracker, BEP 0020 pour l'identifiant de pair. Le code est découpé en quatre bibliothèques partagées, une pour les utilitaires, une pour le décodage bencode, une pour la gestion des fichiers et une pour le réseau, assemblées avec Meson. La contrainte structurante du sujet : ni fork, ni threads, ni clone. Tenir plusieurs pairs en parallèle impose donc une boucle d'événements entièrement bâtie sur epoll.",
+        "period": "2025"
+      },
+      "malloc": {
+        "description": "Allocateur mémoire en C livré en bibliothèque partagée, bâti sur mmap seul, capable de remplacer celui du système.",
+        "long": "Une réimplémentation de malloc, free, calloc et realloc en C99, livrée sous forme de bibliothèque partagée libmalloc.so. Les seuls appels autorisés sont mmap et ses voisins : tout le reste, disposition des métadonnées, structures de suivi et stratégie d'allocation, est à concevoir. Au-delà du fonctionnement de base, le sujet demande la thread-safety, une réallocation optimisée, la résistance à la corruption des métadonnées, une empreinte mémoire réduite, et surtout la capacité à se substituer à l'allocateur du système pour faire tourner de vrais programmes.",
+        "period": "2025"
+      },
+      "myfind": {
+        "description": "Réimplémentation de find(1) en C, avec les expressions de recherche compilées en arbre syntaxique et l'exécution de commandes par fork.",
+        "long": "Une réimplémentation de find(1) en C99, sans glob, sans regexec et sans les fonctions de parcours d'arborescence de la libc, toutes interdites par le sujet. Le parcours récursif s'appuie donc sur l'API Unix brute et sur la lecture des métadonnées de fichiers. La ligne de commande est compilée en arbre syntaxique pour évaluer les expressions : tests sur le nom, le type, les permissions, le propriétaire ou la date, combinés par les opérateurs et, ou, non et les parenthèses. Les actions exec, execdir et delete lancent des commandes par fork pendant le parcours. Le tout accompagné d'une suite de tests de non-régression.",
+        "period": "2025"
+      },
+      "ero1": {
+        "description": "Optimisation du déneigement de Montréal : survol complet du réseau routier par drone, puis tournées de déneigeuses au moindre coût.",
+        "long": "Une étude d'optimisation appliquée au déneigement de Montréal. Premier volet, faire survoler par un drone l'intégralité du réseau routier de la ville, ce qui revient à chercher un parcours eulérien et, quand le graphe ne s'y prête pas, à résoudre un problème du postier chinois. Deuxième volet, planifier les tournées de déneigeuses sur cinq arrondissements, cette fois sur un graphe orienté, en respectant le sens de circulation et sans repasser deux fois sur une voie bidirectionnelle. Troisième volet, un modèle de coût comparant plusieurs scénarios de flotte, entre engins lents et bon marché et machines rapides mais coûteuses. Le réseau routier réel est récupéré depuis OpenStreetMap avec OSMnx et traité avec NetworkX.",
+        "period": "2025"
       },
       "jws-epibazaar": {
         "description": "Backend pour un jeu de gestion de ressources : 3 applications interconnectées avec architecture en couche, messaging Kafka et ORM Hibernate.",

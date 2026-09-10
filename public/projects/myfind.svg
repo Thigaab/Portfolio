@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <defs>
+    <pattern id="d" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#17161d" fill-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="#efe9dc"/>
+  <rect width="800" height="450" fill="url(#d)"/>
+  <rect x="26" y="26" width="748" height="398" rx="14" fill="none" stroke="#17161d" stroke-opacity=".14"/>
+  <text x="78" y="104" font-family="ui-monospace,monospace" font-size="16" letter-spacing="1" fill="#8a3ea6" text-anchor="start">$</text>
+  <text x="100" y="104" font-family="ui-monospace,monospace" font-size="16" letter-spacing="1" fill="#46434f" text-anchor="start">myfind . -name '*.c' -type f</text>
+  <path d="M96 145h16l5 6h17v20h-38z" fill="#8a3ea6" fill-opacity=".22" stroke="#8a3ea6" stroke-opacity=".5" stroke-width="1.6"/>
+  <text x="148" y="161" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="start">src/</text>
+  <path d="M136 185h18l10 10v18h-28z" fill="#8a3ea6" fill-opacity=".32" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="1.6"/>
+  <text x="182" y="203" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#8a3ea6" text-anchor="start">main.c</text>
+  <text x="250" y="203" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#8a3ea6" text-anchor="start">✓</text>
+  <path d="M104 172v22h10" stroke="#17161d" stroke-opacity=".18" stroke-width="1.5" fill="none"/>
+  <path d="M136 227h18l10 10v18h-28z" fill="#8a3ea6" fill-opacity=".32" stroke="#8a3ea6" stroke-opacity=".7" stroke-width="1.6"/>
+  <text x="182" y="245" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#8a3ea6" text-anchor="start">parser.c</text>
+  <text x="268" y="245" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#8a3ea6" text-anchor="start">✓</text>
+  <path d="M104 214v22h10" stroke="#17161d" stroke-opacity=".18" stroke-width="1.5" fill="none"/>
+  <path d="M136 269h18l10 10v18h-28z" fill="#17161d" fill-opacity=".10" stroke="#17161d" stroke-opacity=".22" stroke-width="1.6"/>
+  <text x="182" y="287" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="start">README.md</text>
+  <path d="M104 256v22h10" stroke="#17161d" stroke-opacity=".18" stroke-width="1.5" fill="none"/>
+  <path d="M96 313h16l5 6h17v20h-38z" fill="#8a3ea6" fill-opacity=".22" stroke="#8a3ea6" stroke-opacity=".5" stroke-width="1.6"/>
+  <text x="148" y="329" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="start">build/</text>
+  <path d="M136 353h18l10 10v18h-28z" fill="#17161d" fill-opacity=".10" stroke="#17161d" stroke-opacity=".22" stroke-width="1.6"/>
+  <text x="182" y="371" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="start">main.o</text>
+  <path d="M104 340v22h10" stroke="#17161d" stroke-opacity=".18" stroke-width="1.5" fill="none"/>
+  <line x1="596" y1="198" x2="516" y2="248" stroke="#8a3ea6" stroke-opacity=".45" stroke-width="2"/>
+  <line x1="596" y1="198" x2="676" y2="248" stroke="#8a3ea6" stroke-opacity=".45" stroke-width="2"/>
+  <rect x="565" y="158" width="62" height="40" rx="20" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".75" stroke-width="2"/>
+  <text x="596" y="184" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#8a3ea6" text-anchor="middle">-a</text>
+  <rect x="470" y="248" width="92" height="40" rx="20" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".5" stroke-width="2"/>
+  <text x="516" y="274" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="middle">-name</text>
+  <rect x="630" y="248" width="92" height="40" rx="20" fill="#fbf9f5" stroke="#8a3ea6" stroke-opacity=".5" stroke-width="2"/>
+  <text x="676" y="274" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="middle">-type</text>
+  <text x="516" y="306" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="middle">'*.c'</text>
+  <text x="676" y="306" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="middle">f</text>
+  <text x="596" y="140" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="middle">PREDICATE AST</text>
+  <text x="78" y="404" font-family="ui-monospace,monospace" font-size="15" letter-spacing="3" fill="#7c7787">C99 · POSIX · FORK</text>
+</svg>

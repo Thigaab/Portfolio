@@ -8,38 +8,38 @@
   },
   "hero": {
     "eyebrow": "Fullstack · DevOps · Systems",
-    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from the compiler up to the interface, and ship them myself.",
-    "ctaProjects": "Explore my projects",
+    "bio": "Software engineer trained at EPITA, Toulouse then Paris. From low-level work on real-time systems to modern web apps, and the deployment that comes after.",
+    "ctaProjects": "See my projects",
     "scroll": "Scroll"
   },
   "about": {
     "eyebrow": "01 / About",
     "heading": "About",
-    "bio": "Final-year engineering student at EPITA Paris. I build robust systems, from the compiler up to the interface, and ship them myself.",
-    "paragraph2": "What draws me in is the complexity of systems: a data pipeline, a microservice architecture, a compiler. I look for projects where technical rigor turns into real impact.",
+    "bio": "Trained at EPITA, Toulouse then Paris, majoring in Multimedia and Information Technology, with a minor in quantitative finance. I started low-level: C, shells, memory management, before working my way up to the web and then to infrastructure. I still like both ends of it.",
+    "paragraph2": "In practice: a BitTorrent client and a POSIX shell in C, a concert-planning mobile app built with a team over several months, and a k3s cluster on a VPS that hosts this very site, TLS and monitoring included. What I write, I also deploy and keep running. I'm now looking for a final-year internship to put all of it to work inside a new team.",
     "features": {
       "epita": {
-        "label": "EPITA Paris",
-        "desc": "Engineering degree, class of 2027"
+        "label": "EPITA",
+        "desc": "Toulouse then Paris, class of 2027"
       },
       "fullstack": {
         "label": "Fullstack & DevOps",
-        "desc": "From code to deployment"
+        "desc": "Spring and React, Docker and k8s"
       },
       "systems": {
         "label": "Systems & low level",
-        "desc": "Compilers, shells, C/C++"
+        "desc": "C/C++, shells, allocators"
       },
       "selfhosted": {
         "label": "Self-hosted",
-        "desc": "Personal Docker infrastructure"
+        "desc": "This site runs on my own cluster"
       }
     }
   },
   "stats": {
-    "languages": "Languages mastered",
-    "projects": "Projects shipped",
-    "experience": "Years of experience"
+    "experience": "Years of development",
+    "projects": "Projects completed",
+    "languages": "Languages mastered"
   },
   "skills": {
     "eyebrow": "02 / Tech stack",
@@ -48,11 +48,24 @@
   "projects": {
     "eyebrow": "03 / Selected work",
     "heading": "Projects",
+    "groups": {
+      "product": "Products & apps",
+      "systems": "Systems & infrastructure"
+    },
     "viewGithub": "View on GitHub",
     "visitSite": "Visit the site",
     "privateCode": "Academic project · private code",
+    "personalCode": "Personal project · code not available",
     "details": "View details",
     "close": "Close",
+    "more": "More projects",
+    "carouselLabel": "More projects, horizontal scroll",
+    "prev": "Previous projects",
+    "next": "Next projects",
+    "goTo": "Go to {name}",
+    "shots": "Screenshots",
+    "shotAlt": "Screenshot {n} of {name}",
+    "enlarge": "Enlarge screenshot {n}",
     "items": {
       "meet-to-the-pit": {
         "description": "Social mobile app built around live music: discover events, meet people with matching taste and sort out the logistics together.",
@@ -69,6 +82,41 @@
         "description": "Full compiler for the educational Tiger language: lexical, syntactic and semantic analysis plus code generation.",
         "long": "A full compiler for Tiger, Andrew Appel's educational language, written in C++. It covers the whole pipeline: lexical (Flex) and syntactic (Bison) analysis, AST construction and traversal, semantic analysis (typing, scopes, bindings), then code generation through LLVM. One of the flagship projects of EPITA's systems track, built over several months.",
         "period": "Feb to May 2026"
+      },
+      "infra": {
+        "description": "The VPS this site runs on: a single-node k3s cluster with automatic TLS, Prometheus/Grafana monitoring and Discord alerting.",
+        "long": "A personal server run like a small platform. k3s runs the cluster on a single node, Traefik handles ingress, cert-manager issues and renews Let's Encrypt certificates through the HTTP-01 challenge, and kube-prometheus-stack (Prometheus, Grafana, Alertmanager) watches the whole thing. Alerts land in a Discord channel: its webhooks accept the Slack payload format natively, so Alertmanager's slack_configs receiver is enough, with no relay in between. The repository deliberately keeps cluster-wide concerns such as TLS issuance and monitoring apart from app-specific manifests, which live in each application's own repository. This portfolio has its own k8s folder with its Deployment, Service, Ingress and alert rules: the site you are reading is served by that cluster.",
+        "period": "Since Jul. 2026"
+      },
+      "homelab": {
+        "description": "A self-hosted media server on TrueNAS SCALE: a family library, a Netflix-style request portal, and remote access with no open ports.",
+        "long": "A complete Docker Compose stack, versioned like code, running on a TrueNAS SCALE NAS. Jellyfin serves the library with Intel Quick Sync hardware transcoding, Jellyseerr gives family members a Netflix-style request portal, and Sonarr, Radarr and Prowlarr chain search, retrieval and automatic file organisation together while Bazarr handles subtitles. The download client shares the network stack of a Gluetun container, through network_mode service:gluetun: if the VPN tunnel drops, traffic is cut instantly and no leak is architecturally possible. Remote access goes through an outbound Cloudflare Tunnel paired with Zero Trust Access: no open ports on the router, no static IP to maintain, and one-time-passcode authentication in front of every public hostname. Storage is ZFS, with media and downloads on the same pool so imports happen as hardlinks: instant, and with no copy. Recyclarr finally syncs quality profiles from the TRaSH Guides to keep the library's size sane.",
+        "period": "Since 2026"
+      },
+      "devils-never-lie": {
+        "description": "Top-down roguelike shooter built in Unity: gunplay, upgrade cards drawn between fights and multi-phase bosses.",
+        "long": "A top-down shooter with a roguelike structure, built by a team in Unity 6 and published on itch.io. The heart of the game is the upgrade cards picked between fights: each one bends the stats of the character and of their projectiles, so no two runs play alike. Enemies path through a NavMesh adapted to 2D, bosses chain several phases with a revive counter, and run progress is saved. Under the hood, UniRx for event streams and DOTween for animation. Around 80 C# scripts written by eight people.",
+        "period": "Feb 2026"
+      },
+      "bittorrent": {
+        "description": "A BitTorrent client in C, following the official protocol, holding several peers at once without a single thread thanks to epoll.",
+        "long": "A BitTorrent client written in C99, following the official specification: BEP 0003 for the protocol, BEP 0023 for tracker requests, BEP 0020 for the peer id. The code splits into four shared libraries, one for utilities, one for bencode decoding, one for file handling and one for networking, assembled with Meson. The defining constraint of the assignment: no fork, no threads, no clone. Holding several peers in parallel therefore means an event loop built entirely on epoll.",
+        "period": "2025"
+      },
+      "malloc": {
+        "description": "A memory allocator in C shipped as a shared library, built on mmap alone, able to stand in for the system one.",
+        "long": "A reimplementation of malloc, free, calloc and realloc in C99, shipped as the shared library libmalloc.so. The only calls allowed are mmap and its siblings: everything else, metadata layout, bookkeeping structures and allocation strategy, has to be designed. Beyond the basics, the assignment asks for thread safety, optimised reallocation, resistance to metadata corruption, a smaller memory footprint, and above all the ability to replace the system allocator and run real programs.",
+        "period": "2025"
+      },
+      "myfind": {
+        "description": "A reimplementation of find(1) in C, with search expressions compiled into a syntax tree and commands executed by fork.",
+        "long": "A reimplementation of find(1) in C99, without glob, without regexec and without the libc tree-walking helpers, all forbidden by the assignment. Recursive traversal is therefore built on the raw Unix API and on reading file metadata. The command line is compiled into a syntax tree to evaluate expressions: tests on name, type, permissions, owner or date, combined with the and, or, not and parenthesis operators. The exec, execdir and delete actions fork commands mid-traversal. A regression testsuite comes with it.",
+        "period": "2025"
+      },
+      "ero1": {
+        "description": "Snow removal optimisation for Montréal: a full drone sweep of the road network, then least-cost snowplow routes.",
+        "long": "An optimisation study applied to snow removal in Montréal. First part, fly a drone over the city's entire road network, which comes down to looking for an Eulerian circuit and, where the graph does not allow one, solving a Chinese postman problem. Second part, plan snowplow routes across five boroughs, this time on a directed graph, respecting traffic direction and never covering a two-way road twice. Third part, a cost model comparing fleet scenarios, between slow cheap machines and fast expensive ones. The real road network is pulled from OpenStreetMap with OSMnx and processed with NetworkX.",
+        "period": "2025"
       },
       "jws-epibazaar": {
         "description": "Backend for a resource-management game: 3 interconnected apps with a layered architecture, Kafka messaging and the Hibernate ORM.",

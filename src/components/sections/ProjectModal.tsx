@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import { getLenis } from '@/components/providers/SmoothScroll'
 import type { Project } from '@/lib/data'
 import AwardBadge from '@/components/ui/AwardBadge'
+import ShotGallery from '@/components/ui/ShotGallery'
 
 const ARROW = (
   <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
@@ -19,10 +20,7 @@ export default function ProjectModal({
   onClose: () => void
 }) {
   const t = useTranslations('projects')
-  const [mounted, setMounted] = useState(false)
   const [visible, setVisible] = useState(false)
-
-  useEffect(() => setMounted(true), [])
 
   const close = useCallback(() => {
     setVisible(false)
@@ -44,9 +42,11 @@ export default function ProjectModal({
     }
   }, [project, close])
 
-  if (!mounted || !project) return null
+  // `project` is only ever set from a click, so the portal never runs during
+  // SSR and needs no mounted guard.
+  if (!project) return null
 
-  const { id, title, tech, type, github, website, cover, award } = project
+  const { id, title, tech, type, github, website, cover, award, shots, origin } = project
 
   return createPortal(
     <div
@@ -104,6 +104,8 @@ export default function ProjectModal({
             ))}
           </div>
 
+          <ShotGallery shots={shots} name={title} />
+
           <div className="flex flex-wrap gap-3">
             {website && (
               <a
@@ -129,7 +131,9 @@ export default function ProjectModal({
               </a>
             )}
             {!github && !website && (
-              <span className="font-mono text-xs italic text-ink-3">{t('privateCode')}</span>
+              <span className="font-mono text-xs italic text-ink-3">
+                {t(origin === 'personal' ? 'personalCode' : 'privateCode')}
+              </span>
             )}
           </div>
         </div>

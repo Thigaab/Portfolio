@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" fill="none">
+  <defs>
+    <pattern id="d" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#17161d" fill-opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="#efe9dc"/>
+  <rect width="800" height="450" fill="url(#d)"/>
+  <rect x="70" y="26" width="660" height="398" rx="14" fill="none" stroke="#17161d" stroke-opacity=".14"/>
+  <text x="232" y="96" font-family="ui-monospace,monospace" font-size="13" letter-spacing="2" fill="#7c7787" text-anchor="middle">NAS · ZFS</text>
+  <g transform="translate(232 214)">
+    <rect x="-88" y="-96" width="176" height="192" rx="16" fill="none" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+    <rect x="-64" y="-72" width="128" height="44" rx="10" fill="#2c7a58" fill-opacity="0.5"/>
+    <text x="0" y="-44" font-family="ui-monospace,monospace" font-size="12" fill="#17161d" text-anchor="middle">movies</text>
+    <rect x="-64" y="-16" width="128" height="44" rx="10" fill="#2c7a58" fill-opacity="0.32"/>
+    <text x="0" y="12" font-family="ui-monospace,monospace" font-size="12" fill="#17161d" text-anchor="middle">tv</text>
+    <rect x="-64" y="40" width="128" height="44" rx="10" fill="#2c7a58" fill-opacity="0.18"/>
+    <text x="0" y="68" font-family="ui-monospace,monospace" font-size="12" fill="#17161d" text-anchor="middle">downloads</text>
+  </g>
+    <g transform="translate(196 344)">
+    <path d="M0 -18l26 9v14c0 12-11 20-26 25c-15-5-26-13-26-25v-14z" fill="#fbf9f5" stroke="#2c7a58" stroke-opacity=".75" stroke-width="2"/>
+    <text x="0" y="12" font-family="ui-monospace,monospace" font-size="12" fill="#2c7a58" text-anchor="middle">VPN</text>
+  </g>
+  <path d="M196 310v18" stroke="#17161d" stroke-opacity=".25" stroke-width="1.5" stroke-dasharray="4 6"/>
+  <text x="240" y="352" font-family="ui-monospace,monospace" font-size="12" letter-spacing="1" fill="#7c7787" text-anchor="start">kill-switch</text>
+  <path d="M328 214h104" stroke="#17161d" stroke-opacity=".3" stroke-width="2" stroke-dasharray="6 7"/>
+  <path d="M424 206l10 8l-10 8" stroke="#17161d" stroke-opacity=".45" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="380" y="186" font-family="ui-monospace,monospace" font-size="11" letter-spacing="2" fill="#7c7787" text-anchor="middle">CLOUDFLARE</text>
+  <text x="380" y="200" font-family="ui-monospace,monospace" font-size="11" letter-spacing="2" fill="#7c7787" text-anchor="middle">TUNNEL</text>
+  <g transform="translate(566 200)">
+    <rect x="-114" y="-84" width="228" height="146" rx="14" fill="#fbf9f5" stroke="#17161d" stroke-opacity=".22" stroke-width="2"/>
+    <rect x="-114" y="-84" width="228" height="26" rx="14" fill="#17161d" fill-opacity=".05"/>
+    <circle cx="-96" cy="-71" r="4" fill="#ff6a45"/><circle cx="-82" cy="-71" r="4" fill="#4a3aed"/>
+    <path d="M-18 -22l46 26l-46 26z" fill="#4a3aed"/>
+    <path d="M-24 86h48" stroke="#17161d" stroke-opacity=".25" stroke-width="4" stroke-linecap="round"/>
+    <path d="M0 62v24" stroke="#17161d" stroke-opacity=".25" stroke-width="4"/>
+  </g>
+  <text x="566" y="314" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1" fill="#46434f" text-anchor="middle">jellyfin</text>
+  <rect x="486" y="336" width="160" height="42" rx="12" fill="#fbf9f5" stroke="#2c7a58" stroke-opacity=".5" stroke-width="2"/>
+  <text x="566" y="362" font-family="ui-monospace,monospace" font-size="14" letter-spacing="1" fill="#2c7a58" text-anchor="middle">jellyseerr</text>
+  <path d="M566 336v-14" stroke="#17161d" stroke-opacity=".25" stroke-width="1.5" stroke-dasharray="4 6"/>
+  <text x="104" y="404" font-family="ui-monospace,monospace" font-size="15" letter-spacing="3" fill="#7c7787">TRUENAS · DOCKER · GLUETUN</text>
+</svg>
