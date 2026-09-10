@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, cloneElement, type ReactElement } from 'react'
+import { useRef, type ReactNode } from 'react'
 import gsap from 'gsap'
 
 /**
@@ -10,7 +10,7 @@ export default function Magnetic({
   children,
   strength = 0.4,
 }: {
-  children: ReactElement<Record<string, unknown>>
+  children: ReactNode
   strength?: number
 }) {
   const ref = useRef<HTMLElement>(null)
@@ -29,9 +29,12 @@ export default function Magnetic({
       gsap.to(ref.current, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' })
   }
 
-  return cloneElement(children, {
-    ref,
-    onMouseMove: onMove,
-    onMouseLeave: onLeave,
-  })
+  // The ref lives on a wrapper rather than being cloned onto the child: a ref
+  // handed to someone else's element may be read during render, and GSAP moves
+  // the wrapper just as well.
+  return (
+    <span ref={ref} className="inline-flex" onMouseMove={onMove} onMouseLeave={onLeave}>
+      {children}
+    </span>
+  )
 }

@@ -36,7 +36,7 @@ npm run lint
 - `src/components/layout/BackgroundTexture.tsx` — global CSS background (ink dot grid + drifting risograph washes), behind a `relative z-10` content wrapper in `layout.tsx`. A `.grain-overlay` (multiplied paper noise) sits on top in `layout.tsx`.
 - `src/components/providers/SmoothScroll.tsx` — Lenis ↔ GSAP wiring.
 - `src/components/sections/` — Hero, About, Skills, Projects, Contact. Project cards open **`ProjectModal`** (portal to `document.body` — a `fixed` modal must escape the `transform`ed `TiltCard`/Lenis ancestors; `SmoothScroll` exports `getLenis()` so the modal pauses smooth scroll while open). Per-project **cover art is a hand-drawn SVG** at `public/projects/<id>.svg`; long descriptions live in messages `projects.items.<id>.long`; a project's live-site URL is the `website` field in `data.ts`.
-- `src/components/canvas/` — `HeroScene.tsx`, `LatticeCube.tsx` (lazy-loaded via `next/dynamic` `ssr:false`).
+- `src/components/canvas/` — `HeroScene.tsx` (lazy-loaded via `next/dynamic` `ssr:false`). The hero is the site's only canvas: the About section had a `LatticeCube` too, dropped once the bio grew and took the room.
 - `src/components/ui/` — Navbar, CustomCursor, ScrollProgress, Magnetic, TiltCard, LocaleSwitcher.
 
 ## i18n (next-intl)
@@ -58,9 +58,8 @@ npm run lint
 
 Matte, hand-made objects on paper — never metallic, never dark.
 - **HeroScene**: `ClayStill`, a still-life of soft clay primitives (iris torus knot, coral sphere, cream capsule, ochre rounded box) floating right of the type, + `HalftoneFloor`, an ink point grid that craters away from the cursor.
-- **LatticeCube** (About section): a slowly tumbling cube frame, 12 ink bars and 8 accent corners, over a drei `<ContactShadows>` ground. All 12 edges of a cube are axis aligned, so each is a thin `boxGeometry` with no rotation maths. Corners are coloured by parity, which puts two of each accent on every face. Hover is tracked on the wrapping div, not the meshes: thin bars are miserable to hover in a 224px canvas, and an invisible hit mesh would be picked up by ContactShadows.
-- **On this canvas the user rejected, in order:** a coral `MeshDistortMaterial` blob (disliked outright) and a folded paper dart (too thin, and its ivory face at `#fbf9f5` was 7 points of grey off the `#f4f1ea` page, so it vanished). Whatever sits here must have real volume or heavy ink linework, and must never use a near-paper tone as its main visible surface.
-- **No `<Environment>` / HDRI anywhere.** Both canvases are lit by hemisphere + directional lights only, so nothing can suspend and blank a canvas. Materials are `metalness={0}` + `clearcoat` — clay, not metal. Don't add an env map to "improve" the look.
+- **On the (now removed) About canvas the user rejected, in order:** a coral `MeshDistortMaterial` blob (disliked outright) and a folded paper dart (too thin, and its ivory face at `#fbf9f5` was 7 points of grey off the `#f4f1ea` page, so it vanished). Anything added to a canvas must have real volume or heavy ink linework, and must never use a near-paper tone as its main visible surface.
+- **No `<Environment>` / HDRI anywhere.** The hero canvas is lit by hemisphere + directional lights only, so nothing can suspend and blank it. Materials are `metalness={0}` + `clearcoat` — clay, not metal. Don't add an env map to "improve" the look.
 
 Do NOT go back to icosahedron + orbital rings (reads as an atom), and do not
 reintroduce candlesticks or any market/chart imagery.

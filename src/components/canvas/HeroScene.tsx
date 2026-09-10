@@ -164,7 +164,10 @@ function HalftoneFloor({ pointer }: { pointer: Pointer }) {
     const cy = cursor.current.y
 
     const t = state.clock.elapsedTime
-    const pos = geom.attributes.position
+    // Read the attribute off the mesh rather than the memoized `geom`: it is
+    // the same buffer, but mutating a value captured from render is what the
+    // react-hooks/immutability rule (rightly, in general) forbids.
+    const pos = mesh.geometry.attributes.position
     const arr = pos.array as Float32Array
     for (let i = 0; i < pos.count; i++) {
       const ix = i * 3
